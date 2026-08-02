@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex,nofollow">
+  <meta name="theme-color" content="#08090c">
+  <title>Admin | Torn Deals</title>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="assets/styles.css">
+</head>
+<body class="admin-page">
+  <div id="adminSetupRequired" class="admin-centered" hidden>
+    <div class="login-card">
+      <span class="brand-icon large">T</span>
+      <h1>Connect the website first</h1>
+      <p>Your Supabase connection has not been added.</p>
+      <a class="button button-primary full-width" href="setup.html">Open setup assistant</a>
+    </div>
+  </div>
+
+  <div id="loginView" class="admin-centered" hidden>
+    <form id="loginForm" class="login-card">
+      <a class="brand login-brand" href="index.html"><span class="brand-icon large">T</span><span>Torn Deals</span></a>
+      <h1>Admin sign in</h1>
+      <p>Add, edit, price, photograph, and manage every account from here.</p>
+      <label>Email<input id="loginEmail" type="email" autocomplete="username" required placeholder="admin@example.com"></label>
+      <label>Password<input id="loginPassword" type="password" autocomplete="current-password" required placeholder="Your password"></label>
+      <p id="loginMessage" class="form-message"></p>
+      <button class="button button-primary full-width" type="submit">Sign in</button>
+      <button id="createAdminButton" class="button button-outline full-width" type="button">Create first admin account</button>
+      <a class="back-link" href="index.html">← Back to marketplace</a>
+    </form>
+  </div>
+
+  <div id="claimAdminView" class="admin-centered" hidden>
+    <form id="claimAdminForm" class="login-card">
+      <a class="brand login-brand" href="index.html"><span class="brand-icon large">T</span><span>Torn Deals</span></a>
+      <h1>Claim administrator access</h1>
+      <p>Enter the one-time setup code supplied with this website package.</p>
+      <label>Setup code<input id="bootstrapCode" type="text" autocomplete="off" required placeholder="XXXXX-XXXXX-XXXXX-XXXXX"></label>
+      <p id="claimMessage" class="form-message"></p>
+      <button class="button button-primary full-width" type="submit">Activate admin access</button>
+      <button id="claimLogoutButton" class="button button-ghost full-width" type="button">Sign out</button>
+    </form>
+  </div>
+
+  <div id="dashboardView" class="dashboard" hidden>
+    <aside class="admin-sidebar">
+      <a class="brand" href="index.html"><span class="brand-icon">T</span><span data-brand-name>Torn Deals</span></a>
+      <nav class="admin-nav">
+        <button class="active" data-admin-tab="listings"><span>▦</span>Accounts</button>
+        <button data-admin-tab="settings"><span>⚙</span>Site settings</button>
+      </nav>
+      <div class="sidebar-bottom">
+        <a href="index.html" target="_blank" rel="noopener">View website ↗</a>
+        <button id="logoutButton" type="button">Sign out</button>
+      </div>
+    </aside>
+
+    <main class="admin-main">
+      <header class="admin-topbar">
+        <button id="sidebarToggle" class="sidebar-toggle" type="button">Menu</button>
+        <div><span class="muted-label">ADMIN DASHBOARD</span><strong id="adminEmail"></strong></div>
+      </header>
+
+      <section id="listingsTab" class="admin-content">
+        <div class="admin-title-row">
+          <div><h1>Accounts</h1><p>Add new accounts and manage published listings.</p></div>
+          <button id="addListingButton" class="button button-primary" type="button">+ Add account</button>
+        </div>
+
+        <div class="stats-grid">
+          <article><span>Active</span><strong id="activeStat">0</strong></article>
+          <article><span>Sold</span><strong id="soldStat">0</strong></article>
+          <article><span>Drafts</span><strong id="draftStat">0</strong></article>
+          <article><span>Total</span><strong id="totalStat">0</strong></article>
+        </div>
+
+        <div class="admin-toolbar">
+          <input id="adminSearch" type="search" placeholder="Search accounts">
+          <select id="adminStatusFilter">
+            <option value="all">All statuses</option>
+            <option value="active">Active</option>
+            <option value="sold">Sold</option>
+            <option value="draft">Draft</option>
+          </select>
+        </div>
+
+        <div class="table-wrap">
+          <table class="admin-table">
+            <thead><tr><th>Account</th><th>Game</th><th>Price</th><th>Status</th><th>Updated</th><th></th></tr></thead>
+            <tbody id="adminListingRows"></tbody>
+          </table>
+          <div id="adminEmpty" class="admin-empty" hidden>
+            <div class="empty-mark">T</div>
+            <h3>No accounts yet</h3>
+            <p>Click “Add account” to publish your first listing.</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="settingsTab" class="admin-content" hidden>
+        <div class="admin-title-row"><div><h1>Site settings</h1><p>Change the brand text and buyer contact details without editing code.</p></div></div>
+        <form id="settingsForm" class="settings-card">
+          <div class="form-grid two-columns">
+            <label>Brand name<input name="brand_name" maxlength="50" required></label>
+            <label>Default currency<select name="default_currency"><option>USD</option><option>EUR</option><option>GBP</option><option>CAD</option><option>AUD</option><option>INR</option><option>PKR</option><option>AED</option></select></label>
+            <label class="full-span">Homepage tagline<input name="tagline" maxlength="180" required></label>
+            <label>WhatsApp number<input name="whatsapp_number" placeholder="358401234567"><small>Country code and number only. No plus sign.</small></label>
+            <label>Telegram username<input name="telegram_username" placeholder="torndeals"><small>No @ symbol.</small></label>
+            <label>Support email<input name="support_email" type="email" placeholder="support@torndeals.me"></label>
+            <label>Instagram username<input name="instagram_username" placeholder="torndeals"><small>No @ symbol.</small></label>
+            <label class="full-span">Announcement bar<input name="announcement" maxlength="160" placeholder="Optional message shown above the header"></label>
+          </div>
+          <p id="settingsMessage" class="form-message"></p>
+          <button class="button button-primary" type="submit">Save settings</button>
+        </form>
+      </section>
+    </main>
+  </div>
+
+  <dialog id="listingEditor" class="modal editor-modal">
+    <button id="closeEditor" class="modal-close" type="button" aria-label="Close">×</button>
+    <form id="listingForm">
+      <div class="editor-heading"><div class="eyebrow">ACCOUNT LISTING</div><h2 id="editorTitle">Add account</h2><p>Only publish information and photos that are safe to show publicly.</p></div>
+      <input name="id" type="hidden">
+      <div class="form-grid two-columns">
+        <label class="full-span">Listing title<input name="title" maxlength="90" required placeholder="Example: High-rank mobile account with rare collection"></label>
+        <label>Game<input name="game" maxlength="60" required placeholder="Game name" list="gameSuggestions"></label>
+        <datalist id="gameSuggestions"><option value="PUBG Mobile"><option value="Free Fire"><option value="Fortnite"><option value="Valorant"><option value="Call of Duty Mobile"><option value="Clash of Clans"><option value="Genshin Impact"><option value="Roblox"></datalist>
+        <label>Platform<input name="platform" maxlength="40" required placeholder="Mobile, PC, PlayStation, Xbox"></label>
+        <label>Region<input name="region" maxlength="40" required placeholder="Global, Europe, Asia, North America"></label>
+        <label>Account type<input name="account_type" maxlength="50" placeholder="Standard, ranked, collector, starter"></label>
+        <label>Price<input name="price" type="number" min="0" step="0.01" required placeholder="250"></label>
+        <label>Currency<select name="currency" required><option>USD</option><option>EUR</option><option>GBP</option><option>CAD</option><option>AUD</option><option>INR</option><option>PKR</option><option>AED</option></select></label>
+        <label>Warranty days<input name="warranty_days" type="number" min="0" max="365" value="0"><small>Enter 0 if no warranty is offered.</small></label>
+        <label>Status<select name="status" required><option value="active">Active</option><option value="draft">Draft</option><option value="sold">Sold</option></select></label>
+        <label class="full-span">Short description<textarea name="short_description" rows="2" maxlength="220" required placeholder="A short summary shown on the account card."></textarea></label>
+        <label class="full-span">Full description<textarea name="description" rows="7" maxlength="3000" required placeholder="Explain the account, progress, collection, transfer process, and anything the buyer should know."></textarea></label>
+        <label class="full-span">Key details<textarea name="details" rows="6" maxlength="1600" placeholder="Add one detail per line. Example:\nRank: Conqueror\nLevel: 78\nRare outfits: 24\nLogin method: Transferable email"></textarea><small>These lines appear as a clean details list. Do not enter passwords, emails, account IDs, recovery codes, or private identifiers.</small></label>
+        <label class="checkbox-label"><input name="featured" type="checkbox"><span>Show as a featured account</span></label>
+        <label class="checkbox-label required-check"><input name="ownership_verified" type="checkbox" required><span>I verified the owner has permission to list and transfer this account.</span></label>
+        <div class="full-span image-field">
+          <div class="field-label-row"><div><strong>Photos</strong><small>Upload up to 8 JPG, PNG, or WebP images. Each image can be up to 8 MB.</small></div><label class="button button-outline button-small upload-button">Choose photos<input id="imageInput" type="file" accept="image/jpeg,image/png,image/webp" multiple hidden></label></div>
+          <div id="imagePreviews" class="image-previews"></div>
+          <p class="privacy-hint">Before uploading, hide login emails, passwords, phone numbers, account IDs, recovery codes, QR codes, and payment details.</p>
+        </div>
+      </div>
+      <p id="listingMessage" class="form-message"></p>
+      <div class="editor-actions">
+        <button id="deleteListingButton" class="button button-danger" type="button" hidden>Delete account</button>
+        <div class="editor-actions-right"><button id="cancelEditor" class="button button-ghost" type="button">Cancel</button><button id="saveListingButton" class="button button-primary" type="submit">Save account</button></div>
+      </div>
+    </form>
+  </dialog>
+
+  <div id="toast" class="toast" role="status"></div>
+
+  <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
+  <script src="assets/config.js"></script>
+  <script src="assets/admin.js"></script>
+</body>
+</html>

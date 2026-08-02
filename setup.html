@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex,nofollow">
+  <title>Setup Assistant | Torn Deals</title>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="assets/styles.css">
+</head>
+<body class="setup-page">
+  <header class="setup-header"><div class="container"><a class="brand" href="index.html"><span class="brand-icon">T</span><span>Torn Deals Setup</span></a></div></header>
+  <main class="container setup-main">
+    <div class="setup-intro">
+      <div class="eyebrow">ONE-TIME SETUP</div>
+      <h1>Connect your admin dashboard.</h1>
+      <p>You do not need to write code. Follow these steps once. After that, you add accounts, prices, details, and photos from <strong>admin.html</strong>.</p>
+    </div>
+
+    <section class="setup-step">
+      <div class="setup-number">1</div>
+      <div class="setup-content">
+        <h2>Create a free Supabase project</h2>
+        <p>Create a project at Supabase. Save the database password somewhere safe.</p>
+        <a class="button button-outline button-small" href="https://supabase.com/dashboard" target="_blank" rel="noopener noreferrer">Open Supabase ↗</a>
+      </div>
+    </section>
+
+    <section class="setup-step">
+      <div class="setup-number">2</div>
+      <div class="setup-content">
+        <h2>Create the database and photo storage</h2>
+        <p>In Supabase, open <strong>SQL Editor</strong>, create a new query, paste the full script below, and press <strong>Run</strong>.</p>
+        <div class="code-tools"><button id="copySql" class="button button-outline button-small" type="button">Copy SQL</button><span id="copySqlStatus"></span></div>
+        <textarea id="sqlText" class="sql-box" readonly></textarea>
+      </div>
+    </section>
+
+    <section class="setup-step">
+      <div class="setup-number">3</div>
+      <div class="setup-content">
+        <h2>Create your admin login</h2>
+        <ol>
+          <li>Open <strong>Authentication → Users</strong> in Supabase.</li>
+          <li>Click <strong>Add user</strong> and create your email and password.</li>
+          <li>Disable public user signups in the authentication settings so only your manually created admin can sign in.</li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="setup-step">
+      <div class="setup-number">4</div>
+      <div class="setup-content">
+        <h2>Generate your connection file</h2>
+        <p>In Supabase, open the project API settings. Copy the <strong>Project URL</strong> and the browser-safe <strong>Publishable key</strong> or <strong>anon key</strong>. Never paste a secret or service-role key here.</p>
+        <form id="configGenerator" class="generator-card">
+          <label>Supabase Project URL<input id="supabaseUrl" type="url" required placeholder="https://your-project.supabase.co"></label>
+          <label>Publishable or anon key<textarea id="supabaseKey" rows="4" required placeholder="sb_publishable_... or eyJ..."></textarea></label>
+          <button class="button button-primary" type="submit">Download config.js</button>
+          <p id="configStatus" class="form-message"></p>
+        </form>
+        <p>Replace <strong>assets/config.js</strong> in this website folder with the downloaded file.</p>
+      </div>
+    </section>
+
+    <section class="setup-step">
+      <div class="setup-number">5</div>
+      <div class="setup-content">
+        <h2>Publish on GitHub Pages</h2>
+        <ol>
+          <li>Create a GitHub repository.</li>
+          <li>Upload every file and folder from this website package.</li>
+          <li>Open <strong>Settings → Pages</strong> and publish from the main branch and root folder.</li>
+          <li>Set the custom domain to <strong>TornDeals.me</strong>.</li>
+          <li>Open <strong>admin.html</strong>, sign in, and add your first account.</li>
+        </ol>
+        <a class="button button-primary" href="admin.html">Open admin dashboard</a>
+      </div>
+    </section>
+  </main>
+  <script src="assets/setup.js"></script>
+</body>
+</html>
