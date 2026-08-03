@@ -2,7 +2,8 @@
   "use strict";
   const cfg = window.TORNDEALS_CONFIG || {};
   const configured = /^https:\/\/.+\.supabase\.co\/?$/.test(cfg.supabaseUrl || "") && cfg.supabaseKey && !String(cfg.supabaseKey).startsWith("PASTE_");
-  const client = configured ? window.supabase.createClient(cfg.supabaseUrl.replace(/\/$/, ""), cfg.supabaseKey) : null;
+  const sdkReady = Boolean(window.supabase && typeof window.supabase.createClient === "function");
+  const client = configured && sdkReady ? window.supabase.createClient(cfg.supabaseUrl.replace(/\/$/, ""), cfg.supabaseKey) : null;
   const els = {
     setup: document.querySelector("#adminSetupRequired"), login: document.querySelector("#loginView"), claim: document.querySelector("#claimAdminView"), claimForm: document.querySelector("#claimAdminForm"), bootstrapCode: document.querySelector("#bootstrapCode"), claimMessage: document.querySelector("#claimMessage"), claimLogout: document.querySelector("#claimLogoutButton"), createAdmin: document.querySelector("#createAdminButton"), dashboard: document.querySelector("#dashboardView"), loginForm: document.querySelector("#loginForm"), loginEmail: document.querySelector("#loginEmail"), loginPassword: document.querySelector("#loginPassword"), loginMessage: document.querySelector("#loginMessage"), logout: document.querySelector("#logoutButton"), adminEmail: document.querySelector("#adminEmail"), rows: document.querySelector("#adminListingRows"), adminEmpty: document.querySelector("#adminEmpty"), adminSearch: document.querySelector("#adminSearch"), statusFilter: document.querySelector("#adminStatusFilter"), add: document.querySelector("#addListingButton"), editor: document.querySelector("#listingEditor"), closeEditor: document.querySelector("#closeEditor"), cancelEditor: document.querySelector("#cancelEditor"), editorTitle: document.querySelector("#editorTitle"), form: document.querySelector("#listingForm"), imageInput: document.querySelector("#imageInput"), imagePreviews: document.querySelector("#imagePreviews"), listingMessage: document.querySelector("#listingMessage"), saveButton: document.querySelector("#saveListingButton"), deleteButton: document.querySelector("#deleteListingButton"), settingsForm: document.querySelector("#settingsForm"), settingsMessage: document.querySelector("#settingsMessage"), toast: document.querySelector("#toast"), sidebarToggle: document.querySelector("#sidebarToggle"), sidebar: document.querySelector(".admin-sidebar"), tabs: document.querySelectorAll("[data-admin-tab]"), listingsTab: document.querySelector("#listingsTab"), settingsTab: document.querySelector("#settingsTab"), activeStat: document.querySelector("#activeStat"), soldStat: document.querySelector("#soldStat"), draftStat: document.querySelector("#draftStat"), totalStat: document.querySelector("#totalStat")
   };
@@ -19,6 +20,11 @@
 
   async function init() {
     if (!configured) { setView("setup"); return; }
+    if (!sdkReady) {
+      setView("login");
+      els.loginMessage.textContent = "The admin connection library did not load. Refresh once without an ad blocker or privacy extension.";
+      return;
+    }
     const { data: { session } } = await client.auth.getSession();
     handleSession(session);
     client.auth.onAuthStateChange((_event, sessionValue) => handleSession(sessionValue));
