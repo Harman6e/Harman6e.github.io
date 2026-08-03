@@ -48,16 +48,53 @@
 const BASE="https://zzywhnvevnoattbamfse.supabase.co",KEY="sb_publishable_n707H1yGUvAJ0wElEBRhPw_K_8S2Evw",SITE="https://torndeals.me";
 const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
 const state={access:localStorage.getItem("td_access")||"",refresh:localStorage.getItem("td_refresh")||"",products:[],orders:[],reviews:[],settings:{},editing:null,reviewEditing:null,existing:[],pending:[],remove:[]};
+let refreshPromise=null;
 const esc=v=>String(v??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
 const money=(n,c)=>{try{return new Intl.NumberFormat(undefined,{style:"currency",currency:c||"USD"}).format(Number(n||0))}catch{return `${c||"USD"} ${Number(n||0)}`}};
 function headers(auth=true,extra={}){return {"apikey":KEY,"Content-Type":"application/json",...(auth&&state.access?{"Authorization":`Bearer ${state.access}`}:{ }),...extra}}
-async function api(path,opts={},auth=true){const r=await fetch(BASE+path,{...opts,headers:headers(auth,opts.headers||{})});const text=await r.text();let d=null;try{d=text?JSON.parse(text):null}catch{d=text}if(!r.ok){const e=new Error(d?.message||d?.error_description||d?.hint||text||`Request failed ${r.status}`);e.status=r.status;throw e}return d}
+async function api(path,opts={},auth=true,retry=true){
+  const response=await fetch(BASE+path,{...opts,headers:headers(auth,opts.headers||{})});
+  if(response.status===401&&auth&&retry){
+    const refreshed=await refreshSession();
+    if(refreshed)return api(path,opts,auth,false);
+  }
+  const text=await response.text();
+  let data=null;
+  try{data=text?JSON.parse(text):null}catch{data=text}
+  if(!response.ok){
+    const error=new Error(data?.message||data?.error_description||data?.hint||text||`Request failed ${response.status}`);
+    error.status=response.status;
+    throw error;
+  }
+  return data;
+}
 function saveTokens(d){if(d?.access_token){state.access=d.access_token;localStorage.setItem("td_access",d.access_token)}if(d?.refresh_token){state.refresh=d.refresh_token;localStorage.setItem("td_refresh",d.refresh_token)}}
 function clearTokens(){state.access=state.refresh="";localStorage.removeItem("td_access");localStorage.removeItem("td_refresh")}
 function view(name){$("#loginView").classList.toggle("hidden",name!=="login");$("#claimView").classList.toggle("hidden",name!=="claim");$("#appView").classList.toggle("hidden",name!=="app")}
 function toast(t){$("#toast").textContent=t;$("#toast").classList.remove("hidden");setTimeout(()=>$("#toast").classList.add("hidden"),2600)}
-async function refreshSession(){if(!state.refresh)return false;try{const d=await api("/auth/v1/token?grant_type=refresh_token",{method:"POST",body:JSON.stringify({refresh_token:state.refresh})},false);saveTokens(d);return true}catch{return false}}
-async function user(){try{return await api("/auth/v1/user")}catch(e){if(e.status===401&&await refreshSession())return api("/auth/v1/user");throw e}}
+async function refreshSession(){
+  if(!state.refresh)return false;
+  if(refreshPromise)return refreshPromise;
+  refreshPromise=(async()=>{
+    try{
+      const data=await api(
+        "/auth/v1/token?grant_type=refresh_token",
+        {method:"POST",body:JSON.stringify({refresh_token:state.refresh})},
+        false,
+        false
+      );
+      saveTokens(data);
+      return true;
+    }catch{
+      clearTokens();
+      return false;
+    }finally{
+      refreshPromise=null;
+    }
+  })();
+  return refreshPromise;
+}
+async function user(){return api("/auth/v1/user")}
 async function isAdmin(){try{return await api("/rest/v1/rpc/current_user_is_admin",{method:"POST",body:"{}"})}catch{return false}}
 async function boot(){const hash=new URLSearchParams(location.hash.replace(/^#/,""));if(hash.get("access_token")){saveTokens({access_token:hash.get("access_token"),refresh_token:hash.get("refresh_token")});history.replaceState(null,"",location.pathname)}if(!state.access){view("login");return}try{await user();if(await isAdmin()){view("app");await loadAll()}else view("claim")}catch{clearTokens();view("login")}}
 async function signIn(e){e.preventDefault();$("#loginMsg").textContent="Signing in...";try{const d=await api("/auth/v1/token?grant_type=password",{method:"POST",body:JSON.stringify({email:$("#email").value.trim(),password:$("#password").value})},false);saveTokens(d);await boot()}catch(err){$("#loginMsg").textContent=err.message}}
@@ -133,7 +170,14 @@ async function saveReviewRecord(event){
     closeReviewEditor();
     await loadReviews();
   }catch(error){
-    $("#reviewMsg").textContent=error.message;
+    if(error.status===401){
+      clearTokens();
+      closeReviewEditor();
+      view("login");
+      $("#loginMsg").textContent="Your session expired. Sign in again, then retry.";
+    }else{
+      $("#reviewMsg").textContent=error.message;
+    }
   }finally{
     $("#saveReview").disabled=false;
   }
