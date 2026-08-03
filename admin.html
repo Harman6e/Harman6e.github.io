@@ -12,6 +12,13 @@
 .paymentInfo{margin-top:12px;padding:12px;border:1px solid var(--line);border-radius:10px;background:#0d1116}
 .paymentInfo div{margin:4px 0}.tx{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;overflow-wrap:anywhere}
 .copySmall{border:1px solid var(--line);border-radius:7px;background:#20262f;color:white;padding:5px 8px;font-size:11px}
+.reviewAdminCard{display:grid;grid-template-columns:1fr auto;gap:18px;padding:18px;border:1px solid var(--line);border-radius:14px;background:#11161d;margin-bottom:11px}
+.reviewAdminStars{color:#ffc857;letter-spacing:2px;font-size:18px}
+.reviewAdminText{margin:9px 0;color:#c5cbd3;white-space:pre-wrap}
+.reviewAdminMeta{display:flex;flex-wrap:wrap;gap:8px;color:var(--muted);font-size:11px}
+.reviewAdminActions{display:flex;align-items:start;gap:8px}
+.reviewFormGrid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media(max-width:680px){.reviewAdminCard{grid-template-columns:1fr}.reviewFormGrid{grid-template-columns:1fr}}
 @media(max-width:780px){.layout{grid-template-columns:1fr}.side{position:static;display:flex;overflow:auto}.tab{width:auto;white-space:nowrap}.settingsGrid,.editorGrid{grid-template-columns:1fr}.full{grid-column:auto}.authActions{grid-template-columns:1fr}.panelHead{align-items:start;flex-direction:column}.previews{grid-template-columns:repeat(2,1fr)}.orderCard{grid-template-columns:1fr}}
 </style>
 </head>
@@ -20,15 +27,19 @@
 
 <section id="claimView" class="center hidden"><div class="auth"><div class="brand"><span class="logo">T</span>Torn Deals Admin</div><h1>Activate owner account</h1><p class="muted">Enter the one-time setup code you received.</p><form id="claimForm" class="form"><label>Setup code<input id="claimCode" class="field" required autocomplete="off"></label><div id="claimMsg" class="message"></div><button class="btn primary" type="submit">Activate admin</button><button class="btn outline" id="claimLogout" type="button">Sign out</button></form></div></section>
 
-<section id="appView" class="app hidden"><header class="top"><div class="topRow"><div class="brand" style="margin:0"><span class="logo">T</span><span data-brand>Torn Deals</span></div><button id="logoutBtn" class="btn outline small">Sign out</button></div></header><div class="layout"><aside class="side"><button class="tab active" data-tab="products">Products</button><button class="tab" data-tab="orders">Orders</button><button class="tab" data-tab="settings">Store settings</button></aside><main>
+<section id="appView" class="app hidden"><header class="top"><div class="topRow"><div class="brand" style="margin:0"><span class="logo">T</span><span data-brand>Torn Deals</span></div><button id="logoutBtn" class="btn outline small">Sign out</button></div></header><div class="layout"><aside class="side"><button class="tab active" data-tab="products">Products</button><button class="tab" data-tab="orders">Orders</button><button class="tab" data-tab="reviews">Reviews</button><button class="tab" data-tab="settings">Store settings</button></aside><main>
 <section id="productsPanel" class="panel active"><div class="panelHead"><div><div class="muted">DIRECT STORE</div><h1>Products</h1></div><button id="addProduct" class="btn primary">Add product</button></div><div class="toolbar"><input id="productSearch" class="field" placeholder="Search products"><select id="productStatus" class="field" style="max-width:170px"><option value="all">All statuses</option><option value="active">Active</option><option value="sold">Sold</option><option value="draft">Draft</option></select></div><div class="tableWrap"><table class="table"><thead><tr><th>Product</th><th>Type</th><th>Game</th><th>Price</th><th>Stock</th><th>Status</th><th></th></tr></thead><tbody id="productRows"></tbody></table><div id="productEmpty" class="empty">No products yet.</div></div></section>
 
 <section id="ordersPanel" class="panel"><div class="panelHead"><div><div class="muted">CUSTOMERS</div><h1>Orders</h1></div><button id="refreshOrders" class="btn outline">Refresh</button></div><div id="ordersList"></div><div id="ordersEmpty" class="empty card">No order requests yet.</div></section>
+
+<section id="reviewsPanel" class="panel"><div class="panelHead"><div><div class="muted">SOCIAL PROOF</div><h1>Reviews</h1><p class="muted">Publish only genuine customer feedback. You control the name, stars, message, order, visibility, and verified-purchase badge.</p></div><button id="addReview" class="btn primary">Add review</button></div><div id="reviewsList"></div><div id="reviewsEmpty" class="empty card">No reviews yet.</div></section>
 
 <section id="settingsPanel" class="panel"><div class="panelHead"><div><div class="muted">STORE</div><h1>Settings</h1></div></div><form id="settingsForm" class="card form settingsGrid"><label>Brand name<input class="field" name="brand_name" required maxlength="50"></label><label>Default currency<select class="field" name="default_currency"><option>USD</option><option>EUR</option><option>GBP</option><option>CAD</option><option>AUD</option><option>INR</option><option>PKR</option><option>AED</option></select></label><label class="full">Homepage tagline<input class="field" name="tagline" required maxlength="180"></label><label>WhatsApp number<input class="field" name="whatsapp_number" placeholder="358..."></label><label>Telegram username<input class="field" name="telegram_username" placeholder="username"></label><label>Support email<input class="field" type="email" name="support_email"></label><label>Instagram username<input class="field" name="instagram_username"></label><label class="full">Announcement<input class="field" name="announcement" maxlength="160"></label><h3 class="sectionTitle">Crypto payment wallets</h3><p class="help full">Add public receiving addresses only. Never paste a seed phrase, private key, exchange password, recovery code, or secret API key here.</p><label class="check"><input type="checkbox" name="usdt_enabled"> Enable USDT</label><label>USDT network<input class="field" name="usdt_network" maxlength="30" placeholder="TRC20"></label><label class="full">USDT receiving address<input class="field tx" name="usdt_address" maxlength="180"></label><label class="check"><input type="checkbox" name="btc_enabled"> Enable Bitcoin</label><label class="full">Bitcoin receiving address<input class="field tx" name="btc_address" maxlength="180"></label><label class="check"><input type="checkbox" name="ltc_enabled"> Enable Litecoin</label><label class="full">Litecoin receiving address<input class="field tx" name="ltc_address" maxlength="180"></label><label class="check"><input type="checkbox" name="eth_enabled"> Enable Ethereum</label><label class="full">Ethereum receiving address<input class="field tx" name="eth_address" maxlength="180"></label><label class="full">Payment instructions<textarea class="field" name="crypto_payment_note" maxlength="500" placeholder="Send the exact amount on the selected network."></textarea></label><div id="settingsMsg" class="message full"></div><button class="btn primary" type="submit">Save settings</button></form></section>
 </main></div></section>
 
 <dialog id="editor" class="modal"><div class="modalIn"><button id="closeEditor" class="close">×</button><h2 id="editorTitle">Add product</h2><form id="productForm" class="form editorGrid"><input type="hidden" name="id"><label>Product type<select class="field" name="product_kind"><option value="account">Game account</option><option value="item">Digital item</option></select></label><label>Title<input class="field" name="title" maxlength="90" required></label><label>Game or category<input class="field" name="game" maxlength="60" required></label><label>Platform<input class="field" name="platform" maxlength="40" required placeholder="PC, PlayStation, Android..."></label><label>Region<input class="field" name="region" maxlength="40" required placeholder="Global, EU, NA..."></label><label>Account or item type<input class="field" name="account_type" maxlength="50"></label><label>Price<input class="field" name="price" type="number" min="0" step=".01" required></label><label>Currency<select class="field" name="currency"><option>USD</option><option>EUR</option><option>GBP</option><option>CAD</option><option>AUD</option><option>INR</option><option>PKR</option><option>AED</option></select></label><label>Stock quantity<input class="field" name="stock_quantity" type="number" min="0" max="100000" value="1" required></label><label>Warranty days<input class="field" name="warranty_days" type="number" min="0" max="365" value="0"></label><h3 class="sectionTitle">Exact crypto prices</h3><p class="help full">Enter the exact amount a buyer must send. Leave a field empty to hide that payment method for this product.</p><label>USDT amount<input class="field" name="crypto_usdt" type="number" min="0" step="0.000001" placeholder="Example: 125"></label><label>Bitcoin amount<input class="field" name="crypto_btc" type="number" min="0" step="0.00000001" placeholder="Example: 0.00125"></label><label>Litecoin amount<input class="field" name="crypto_ltc" type="number" min="0" step="0.00000001"></label><label>Ethereum amount<input class="field" name="crypto_eth" type="number" min="0" step="0.00000001"></label><label>Status<select class="field" name="status"><option value="active">Active</option><option value="draft">Draft</option><option value="sold">Sold</option></select></label><label class="full">Short description<input class="field" name="short_description" minlength="10" maxlength="220" required></label><label class="full">Full description<textarea class="field" name="description" minlength="20" maxlength="3000" required></textarea></label><label class="full">Details, one per line<textarea class="field" name="details" placeholder="Level: 80&#10;Skins: 24&#10;Delivery: Email change"></textarea></label><label class="full">Delivery note<textarea class="field" name="delivery_note" maxlength="500" placeholder="How the product will be delivered"></textarea></label><label class="full">Photos, up to 8<input id="images" class="field" type="file" accept="image/jpeg,image/png,image/webp" multiple></label><div id="previews" class="previews full"></div><div class="checks full"><label class="check"><input type="checkbox" name="featured"> Featured product</label></div><div id="productMsg" class="message full"></div><div class="full" style="display:flex;gap:9px;justify-content:space-between"><button id="deleteProduct" class="btn danger hidden" type="button">Delete</button><div style="display:flex;gap:9px;margin-left:auto"><button id="cancelEditor" class="btn outline" type="button">Cancel</button><button id="saveProduct" class="btn primary" type="submit">Save product</button></div></div></form></div></dialog>
+
+<dialog id="reviewEditor" class="modal"><div class="modalIn"><button id="closeReviewEditor" class="close">×</button><h2 id="reviewEditorTitle">Add review</h2><form id="reviewForm" class="form reviewFormGrid"><input type="hidden" name="id"><label>Customer name<input class="field" name="customer_name" minlength="2" maxlength="60" required placeholder="Example: Erik"></label><label>Star rating<select class="field" name="stars"><option value="5">5 stars</option><option value="4">4 stars</option><option value="3">3 stars</option><option value="2">2 stars</option><option value="1">1 star</option></select></label><label class="full">Review message<textarea class="field" name="body" minlength="5" maxlength="500" required placeholder="Paste the customer's genuine feedback"></textarea></label><label>Display order<input class="field" name="sort_order" type="number" min="-100000" max="100000" value="0"></label><div class="checks"><label class="check"><input type="checkbox" name="is_verified"> Verified purchase</label><label class="check"><input type="checkbox" name="is_published" checked> Published</label></div><p class="help full">The verified badge should only be used when you can match the review to a completed order.</p><div id="reviewMsg" class="message full"></div><div class="full" style="display:flex;gap:9px;justify-content:space-between"><button id="deleteReview" class="btn danger hidden" type="button">Delete</button><div style="display:flex;gap:9px;margin-left:auto"><button id="cancelReviewEditor" class="btn outline" type="button">Cancel</button><button id="saveReview" class="btn primary" type="submit">Save review</button></div></div></form></div></dialog>
 <div id="toast" class="toast hidden"></div>
 
 <script>
@@ -36,7 +47,7 @@
 "use strict";
 const BASE="https://zzywhnvevnoattbamfse.supabase.co",KEY="sb_publishable_n707H1yGUvAJ0wElEBRhPw_K_8S2Evw",SITE="https://torndeals.me";
 const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
-const state={access:localStorage.getItem("td_access")||"",refresh:localStorage.getItem("td_refresh")||"",products:[],orders:[],settings:{},editing:null,existing:[],pending:[],remove:[]};
+const state={access:localStorage.getItem("td_access")||"",refresh:localStorage.getItem("td_refresh")||"",products:[],orders:[],reviews:[],settings:{},editing:null,reviewEditing:null,existing:[],pending:[],remove:[]};
 const esc=v=>String(v??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
 const money=(n,c)=>{try{return new Intl.NumberFormat(undefined,{style:"currency",currency:c||"USD"}).format(Number(n||0))}catch{return `${c||"USD"} ${Number(n||0)}`}};
 function headers(auth=true,extra={}){return {"apikey":KEY,"Content-Type":"application/json",...(auth&&state.access?{"Authorization":`Bearer ${state.access}`}:{ }),...extra}}
@@ -52,7 +63,7 @@ async function boot(){const hash=new URLSearchParams(location.hash.replace(/^#/,
 async function signIn(e){e.preventDefault();$("#loginMsg").textContent="Signing in...";try{const d=await api("/auth/v1/token?grant_type=password",{method:"POST",body:JSON.stringify({email:$("#email").value.trim(),password:$("#password").value})},false);saveTokens(d);await boot()}catch(err){$("#loginMsg").textContent=err.message}}
 async function signup(){const email=$("#email").value.trim(),password=$("#password").value;if(!email||password.length<6){$("#loginMsg").textContent="Enter an email and a password with at least 6 characters.";return}$("#loginMsg").textContent="Creating account...";try{const d=await api(`/auth/v1/signup?redirect_to=${encodeURIComponent(SITE+"/admin.html")}`,{method:"POST",body:JSON.stringify({email,password})},false);if(d?.access_token){saveTokens(d);await boot()}else $("#loginMsg").textContent="Account created. Confirm the email, then return here and sign in."}catch(err){$("#loginMsg").textContent=err.message}}
 async function claim(e){e.preventDefault();$("#claimMsg").textContent="Activating...";try{await api("/rest/v1/rpc/claim_admin",{method:"POST",body:JSON.stringify({p_bootstrap_code:$("#claimCode").value.trim().toUpperCase()})});$("#claimMsg").textContent="Activated.";await boot()}catch(err){$("#claimMsg").textContent=err.message}}
-async function loadAll(){await Promise.all([loadProducts(),loadOrders(),loadSettings()])}
+async function loadAll(){await Promise.all([loadProducts(),loadOrders(),loadReviews(),loadSettings()])}
 async function loadProducts(){state.products=await api("/rest/v1/listings?select=*&order=created_at.desc")||[];renderProducts()}
 function renderProducts(){const q=$("#productSearch").value.trim().toLowerCase(),status=$("#productStatus").value;const rows=state.products.filter(p=>(status==="all"||p.status===status)&&(!q||[p.title,p.game,p.platform,p.region].join(" ").toLowerCase().includes(q)));$("#productRows").innerHTML=rows.map(p=>`<tr><td><strong>${esc(p.title)}</strong><br><span class="muted">${esc(p.platform)} · ${esc(p.region)}</span></td><td>${p.product_kind==="item"?"Item":"Account"}</td><td>${esc(p.game)}</td><td>${esc(money(p.price,p.currency))}</td><td>${p.stock_quantity}</td><td><span class="pill ${p.status==="active"?"activeP":p.status==="sold"?"soldP":"draftP"}">${esc(p.status)}</span></td><td><button class="btn outline small" data-edit="${p.id}">Edit</button></td></tr>`).join("");$("#productEmpty").classList.toggle("hidden",rows.length>0);$$("[data-edit]").forEach(b=>b.onclick=()=>openEditor(state.products.find(p=>p.id===b.dataset.edit)))}
 async function loadOrders(){try{state.orders=await api("/rest/v1/orders?select=*,listings(title,price,currency,product_kind)&order=created_at.desc")||[]}catch{state.orders=[]}renderOrders()}
@@ -62,6 +73,81 @@ function renderOrders(){
   $("#ordersEmpty").classList.toggle("hidden",state.orders.length>0);
   $$("[data-order-status]").forEach(s=>s.onchange=async()=>{try{await api(`/rest/v1/orders?id=eq.${s.dataset.orderStatus}`,{method:"PATCH",headers:{"Prefer":"return=minimal"},body:JSON.stringify({status:s.value,updated_at:new Date().toISOString()})});toast("Order updated")}catch(e){toast(e.message)}});
   $$("[data-copy]").forEach(b=>b.onclick=async()=>{try{await navigator.clipboard.writeText(b.dataset.copy);toast("Transaction hash copied")}catch{prompt("Copy transaction hash:",b.dataset.copy)}});
+}
+function adminStars(value){const n=Math.max(1,Math.min(5,Number(value)||1));return "★".repeat(n)+"☆".repeat(5-n)}
+async function loadReviews(){state.reviews=await api("/rest/v1/reviews?select=*&order=sort_order.asc,created_at.desc")||[];renderReviews()}
+function renderReviews(){
+  const box=$("#reviewsList");
+  box.innerHTML=state.reviews.map(review=>`<article class="reviewAdminCard"><div><div class="reviewAdminStars">${adminStars(review.stars)}</div><h3>${esc(review.customer_name)}</h3><p class="reviewAdminText">“${esc(review.body)}”</p><div class="reviewAdminMeta"><span>${review.is_published?"Published":"Hidden"}</span>${review.is_verified?"<span>Verified purchase</span>":""}<span>Order: ${review.sort_order}</span><span>${new Date(review.created_at).toLocaleDateString()}</span></div></div><div class="reviewAdminActions"><button class="btn outline small" data-edit-review="${review.id}">Edit</button></div></article>`).join("");
+  $("#reviewsEmpty").classList.toggle("hidden",state.reviews.length>0);
+  $$("[data-edit-review]").forEach(button=>button.onclick=()=>openReviewEditor(state.reviews.find(review=>review.id===button.dataset.editReview)));
+}
+function resetReviewEditor(){
+  state.reviewEditing=null;
+  $("#reviewForm").reset();
+  $("#reviewForm").elements.stars.value="5";
+  $("#reviewForm").elements.sort_order.value="0";
+  $("#reviewForm").elements.is_published.checked=true;
+  $("#deleteReview").classList.add("hidden");
+  $("#reviewMsg").textContent="";
+}
+function openReviewEditor(review=null){
+  resetReviewEditor();
+  state.reviewEditing=review;
+  if(review){
+    $("#reviewEditorTitle").textContent="Edit review";
+    $("#deleteReview").classList.remove("hidden");
+    Object.entries(review).forEach(([key,value])=>{
+      const field=$("#reviewForm").elements[key];
+      if(!field)return;
+      if(field.type==="checkbox")field.checked=Boolean(value);
+      else field.value=value??"";
+    });
+  }else{
+    $("#reviewEditorTitle").textContent="Add review";
+  }
+  $("#reviewEditor").showModal();
+}
+function closeReviewEditor(){$("#reviewEditor").close();resetReviewEditor()}
+async function saveReviewRecord(event){
+  event.preventDefault();
+  const form=new FormData(event.target);
+  const payload={
+    customer_name:String(form.get("customer_name")).trim(),
+    stars:Number(form.get("stars")),
+    body:String(form.get("body")).trim(),
+    sort_order:Number(form.get("sort_order")||0),
+    is_verified:form.get("is_verified")==="on",
+    is_published:form.get("is_published")==="on",
+    updated_at:new Date().toISOString()
+  };
+  $("#saveReview").disabled=true;
+  $("#reviewMsg").textContent="Saving...";
+  try{
+    if(state.reviewEditing){
+      await api(`/rest/v1/reviews?id=eq.${state.reviewEditing.id}`,{method:"PATCH",headers:{"Prefer":"return=minimal"},body:JSON.stringify(payload)});
+    }else{
+      await api("/rest/v1/reviews",{method:"POST",headers:{"Prefer":"return=minimal"},body:JSON.stringify(payload)});
+    }
+    toast(state.reviewEditing?"Review updated":"Review added");
+    closeReviewEditor();
+    await loadReviews();
+  }catch(error){
+    $("#reviewMsg").textContent=error.message;
+  }finally{
+    $("#saveReview").disabled=false;
+  }
+}
+async function deleteReviewRecord(){
+  if(!state.reviewEditing||!confirm(`Delete review from "${state.reviewEditing.customer_name}"?`))return;
+  try{
+    await api(`/rest/v1/reviews?id=eq.${state.reviewEditing.id}`,{method:"DELETE",headers:{"Prefer":"return=minimal"}});
+    toast("Review deleted");
+    closeReviewEditor();
+    await loadReviews();
+  }catch(error){
+    toast(error.message);
+  }
 }
 async function loadSettings(){const d=await api("/rest/v1/site_settings?select=*&id=eq.1");state.settings=d?.[0]||{};Object.entries(state.settings).forEach(([k,v])=>{const f=$("#settingsForm").elements[k];if(!f)return;if(f.type==="checkbox")f.checked=Boolean(v);else f.value=v??""});$$("[data-brand]").forEach(x=>x.textContent=state.settings.brand_name||"Torn Deals")}
 async function saveSettings(e){e.preventDefault();const f=new FormData(e.target),p={id:1,brand_name:String(f.get("brand_name")).trim(),tagline:String(f.get("tagline")).trim(),default_currency:String(f.get("default_currency")),whatsapp_number:String(f.get("whatsapp_number")||"").replace(/\D/g,""),telegram_username:String(f.get("telegram_username")||"").replace(/^@/,"").trim(),support_email:String(f.get("support_email")||"").trim(),instagram_username:String(f.get("instagram_username")||"").replace(/^@/,"").trim(),announcement:String(f.get("announcement")||"").trim(),usdt_enabled:f.get("usdt_enabled")==="on",usdt_network:String(f.get("usdt_network")||"TRC20").trim(),usdt_address:String(f.get("usdt_address")||"").trim(),btc_enabled:f.get("btc_enabled")==="on",btc_address:String(f.get("btc_address")||"").trim(),ltc_enabled:f.get("ltc_enabled")==="on",ltc_address:String(f.get("ltc_address")||"").trim(),eth_enabled:f.get("eth_enabled")==="on",eth_address:String(f.get("eth_address")||"").trim(),crypto_payment_note:String(f.get("crypto_payment_note")||"").trim(),updated_at:new Date().toISOString()};$("#settingsMsg").textContent="Saving...";try{await api("/rest/v1/site_settings",{method:"POST",headers:{"Prefer":"resolution=merge-duplicates,return=minimal"},body:JSON.stringify(p)});$("#settingsMsg").textContent="Saved.";state.settings=p;$$("[data-brand]").forEach(x=>x.textContent=p.brand_name);toast("Settings saved")}catch(err){$("#settingsMsg").textContent=err.message}}
@@ -75,7 +161,7 @@ async function removeImages(paths){for(const p of paths){await fetch(`${BASE}/st
 async function saveProduct(e){e.preventDefault();const f=new FormData(e.target);$("#saveProduct").disabled=true;$("#productMsg").textContent="Saving...";try{const uploaded=await uploadImages(),details=String(f.get("details")||"").split("\n").map(x=>x.trim()).filter(Boolean);const crypto_prices={};[["USDT","crypto_usdt"],["BTC","crypto_btc"],["LTC","crypto_ltc"],["ETH","crypto_eth"]].forEach(([symbol,name])=>{const raw=String(f.get(name)||"").trim();if(raw!==""&&Number(raw)>0)crypto_prices[symbol]=Number(raw)});const p={product_kind:String(f.get("product_kind")),title:String(f.get("title")).trim(),game:String(f.get("game")).trim(),platform:String(f.get("platform")).trim(),region:String(f.get("region")).trim(),account_type:String(f.get("account_type")||"").trim(),price:Number(f.get("price")),currency:String(f.get("currency")),stock_quantity:Number(f.get("stock_quantity")),warranty_days:Number(f.get("warranty_days")||0),status:String(f.get("status")),short_description:String(f.get("short_description")).trim(),description:String(f.get("description")).trim(),details,delivery_note:String(f.get("delivery_note")||"").trim(),crypto_prices,featured:f.get("featured")==="on",ownership_verified:true,images:[...state.existing,...uploaded],updated_at:new Date().toISOString()};if(state.editing)await api(`/rest/v1/listings?id=eq.${state.editing.id}`,{method:"PATCH",headers:{"Prefer":"return=minimal"},body:JSON.stringify(p)});else await api("/rest/v1/listings",{method:"POST",headers:{"Prefer":"return=minimal"},body:JSON.stringify(p)});await removeImages(state.remove);toast(state.editing?"Product updated":"Product added");closeEditor();await loadProducts()}catch(err){$("#productMsg").textContent=err.message}finally{$("#saveProduct").disabled=false}}
 async function deleteProduct(){if(!state.editing||!confirm(`Delete "${state.editing.title}"?`))return;try{await api(`/rest/v1/listings?id=eq.${state.editing.id}`,{method:"DELETE",headers:{"Prefer":"return=minimal"}});await removeImages((state.editing.images||[]).map(x=>x.path).filter(Boolean));toast("Product deleted");closeEditor();await loadProducts()}catch(err){toast(err.message)}}
 function tab(name){$$(".tab").forEach(x=>x.classList.toggle("active",x.dataset.tab===name));$$(".panel").forEach(x=>x.classList.remove("active"));$(`#${name}Panel`).classList.add("active")}
-$("#loginForm").onsubmit=signIn;$("#signupBtn").onclick=signup;$("#claimForm").onsubmit=claim;$("#claimLogout").onclick=()=>{clearTokens();view("login")};$("#logoutBtn").onclick=()=>{clearTokens();view("login")};$("#addProduct").onclick=()=>openEditor();$("#closeEditor").onclick=closeEditor;$("#cancelEditor").onclick=closeEditor;$("#productForm").onsubmit=saveProduct;$("#deleteProduct").onclick=deleteProduct;$("#images").onchange=e=>addImages(e.target.files);$("#productSearch").oninput=renderProducts;$("#productStatus").onchange=renderProducts;$("#refreshOrders").onclick=loadOrders;$("#settingsForm").onsubmit=saveSettings;$$(".tab").forEach(x=>x.onclick=()=>tab(x.dataset.tab));$("#editor").onclick=e=>{if(e.target===$("#editor"))closeEditor()};boot();
+$("#loginForm").onsubmit=signIn;$("#signupBtn").onclick=signup;$("#claimForm").onsubmit=claim;$("#claimLogout").onclick=()=>{clearTokens();view("login")};$("#logoutBtn").onclick=()=>{clearTokens();view("login")};$("#addProduct").onclick=()=>openEditor();$("#addReview").onclick=()=>openReviewEditor();$("#closeReviewEditor").onclick=closeReviewEditor;$("#cancelReviewEditor").onclick=closeReviewEditor;$("#reviewForm").onsubmit=saveReviewRecord;$("#deleteReview").onclick=deleteReviewRecord;$("#closeEditor").onclick=closeEditor;$("#cancelEditor").onclick=closeEditor;$("#productForm").onsubmit=saveProduct;$("#deleteProduct").onclick=deleteProduct;$("#images").onchange=e=>addImages(e.target.files);$("#productSearch").oninput=renderProducts;$("#productStatus").onchange=renderProducts;$("#refreshOrders").onclick=loadOrders;$("#settingsForm").onsubmit=saveSettings;$$(".tab").forEach(x=>x.onclick=()=>tab(x.dataset.tab));$("#editor").onclick=e=>{if(e.target===$("#editor"))closeEditor()};$("#reviewEditor").onclick=e=>{if(e.target===$("#reviewEditor"))closeReviewEditor()};boot();
 })();
 </script>
 </body>
