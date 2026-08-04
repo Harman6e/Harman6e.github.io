@@ -200,7 +200,38 @@ async function deleteReviewRecord(){
 async function loadSettings(){const d=await api("/rest/v1/site_settings?select=*&id=eq.1");state.settings=d?.[0]||{};Object.entries(state.settings).forEach(([k,v])=>{const f=$("#settingsForm").elements[k];if(!f)return;if(f.type==="checkbox")f.checked=Boolean(v);else f.value=v??""});$$("[data-brand]").forEach(x=>x.textContent=state.settings.brand_name||"Torn Deals")}
 async function saveSettings(e){e.preventDefault();const f=new FormData(e.target),p={id:1,brand_name:String(f.get("brand_name")).trim(),tagline:String(f.get("tagline")).trim(),default_currency:String(f.get("default_currency")),whatsapp_number:String(f.get("whatsapp_number")||"").replace(/\D/g,""),telegram_username:String(f.get("telegram_username")||"").replace(/^@/,"").trim(),support_email:String(f.get("support_email")||"").trim(),instagram_username:String(f.get("instagram_username")||"").replace(/^@/,"").trim(),announcement:String(f.get("announcement")||"").trim(),usdt_enabled:f.get("usdt_enabled")==="on",usdt_network:String(f.get("usdt_network")||"TRC20").trim(),usdt_address:String(f.get("usdt_address")||"").trim(),btc_enabled:f.get("btc_enabled")==="on",btc_address:String(f.get("btc_address")||"").trim(),ltc_enabled:f.get("ltc_enabled")==="on",ltc_address:String(f.get("ltc_address")||"").trim(),eth_enabled:f.get("eth_enabled")==="on",eth_address:String(f.get("eth_address")||"").trim(),crypto_payment_note:String(f.get("crypto_payment_note")||"").trim(),updated_at:new Date().toISOString()};$("#settingsMsg").textContent="Saving...";try{await api("/rest/v1/site_settings",{method:"POST",headers:{"Prefer":"resolution=merge-duplicates,return=minimal"},body:JSON.stringify(p)});$("#settingsMsg").textContent="Saved.";state.settings=p;$$("[data-brand]").forEach(x=>x.textContent=p.brand_name);toast("Settings saved")}catch(err){$("#settingsMsg").textContent=err.message}}
 function resetEditor(){state.editing=null;state.existing=[];state.pending.forEach(x=>URL.revokeObjectURL(x.preview));state.pending=[];state.remove=[];$("#productForm").reset();$("#productForm").elements.stock_quantity.value=1;$("#productForm").elements.warranty_days.value=0;$("#productForm").elements.status.value="active";$("#deleteProduct").classList.add("hidden");$("#productMsg").textContent="";renderPreviews()}
-function openEditor(p=null){resetEditor();state.editing=p;if(p){$("#editorTitle").textContent="Edit product";$("#deleteProduct").classList.remove("hidden");Object.entries(p).forEach(([k,v])=>{const f=$("#productForm").elements[k];if(!f)return;if(f.type==="checkbox")f.checked=Boolean(v);else if(k==="details")f.value=Array.isArray(v)?v.join("\n"):"";else f.value=v??""});const cp=p.crypto_prices&&typeof p.crypto_prices==="object"?p.crypto_prices:{};$("#productForm").elements.crypto_usdt.value=cp.USDT??"";$("#productForm").elements.crypto_btc.value=cp.BTC??"";$("#productForm").elements.crypto_ltc.value=cp.LTC??"";$("#productForm").elements.crypto_eth.value=cp.ETH??"";state.existing=Array.isArray(p.images)?structuredClone(p.images):[]}else $("#editorTitle").textContent="Add product";renderPreviews();$("#editor").showModal()}
+function openEditor(p=null){
+  resetEditor();
+  state.editing=p;
+
+  if(p){
+    $("#editorTitle").textContent="Edit product";
+    $("#deleteProduct").classList.remove("hidden");
+
+    Object.entries(p).forEach(([k,v])=>{
+      const field=$("#productForm").elements[k];
+      if(!field)return;
+      if(field.type==="checkbox")field.checked=Boolean(v);
+      else if(k==="details")field.value=Array.isArray(v)?v.join("\n"):"";
+      else field.value=v??"";
+    });
+
+    const cryptoPrices=p.crypto_prices&&typeof p.crypto_prices==="object"?p.crypto_prices:{};
+    $("#productForm").elements.crypto_usdt.value=cryptoPrices.USDT??"";
+    $("#productForm").elements.crypto_btc.value=cryptoPrices.BTC??"";
+    $("#productForm").elements.crypto_ltc.value=cryptoPrices.LTC??"";
+    $("#productForm").elements.crypto_eth.value=cryptoPrices.ETH??"";
+
+    state.existing=Array.isArray(p.images)
+      ? p.images.map(image=>({...image}))
+      : [];
+  }else{
+    $("#editorTitle").textContent="Add product";
+  }
+
+  renderPreviews();
+  $("#editor").showModal();
+}
 function closeEditor(){state.pending.forEach(x=>URL.revokeObjectURL(x.preview));$("#editor").close();resetEditor()}
 function renderPreviews(){const box=$("#previews");box.innerHTML="";state.existing.forEach((x,i)=>{const d=document.createElement("div");d.className="preview";d.innerHTML=`<img src="${esc(x.url)}"><button type="button">×</button>`;d.querySelector("button").onclick=()=>{if(x.path)state.remove.push(x.path);state.existing.splice(i,1);renderPreviews()};box.append(d)});state.pending.forEach((x,i)=>{const d=document.createElement("div");d.className="preview";d.innerHTML=`<img src="${esc(x.preview)}"><button type="button">×</button>`;d.querySelector("button").onclick=()=>{URL.revokeObjectURL(x.preview);state.pending.splice(i,1);renderPreviews()};box.append(d)})}
 function addImages(files){const remain=8-state.existing.length-state.pending.length;[...files].slice(0,remain).forEach(file=>{if(!["image/jpeg","image/png","image/webp"].includes(file.type)||file.size>8*1024*1024)return;state.pending.push({file,preview:URL.createObjectURL(file)})});renderPreviews();$("#images").value=""}
