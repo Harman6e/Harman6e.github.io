@@ -7,7 +7,7 @@
 <link rel="canonical" href="https://torndeals.me/admin.html">
 <meta name="theme-color" content="#07080b">
 <link rel="icon" type="image/png" href="assets/favicon.png">
-<title>Torn Deals Admin v2.2</title>
+<title>Torn Deals Admin v2.4</title>
 <style>
 :root{--bg:#07080b;--panel:#101319;--panel2:#171a21;--line:#2c3038;--text:#f6f7f9;--muted:#98a1ad;--red:#f00024;--green:#52d273;--max:1250px}
 *{box-sizing:border-box}html{color-scheme:dark}body{margin:0;background:radial-gradient(circle at 78% -10%,rgba(240,0,36,.16),transparent 32%),var(--bg);color:var(--text);font-family:Inter,system-ui,-apple-system,Segoe UI,sans-serif}button,input,select,textarea{font:inherit}button{cursor:pointer}.hidden{display:none!important}.center{min-height:100vh;display:grid;place-items:center;padding:22px}.auth{width:min(460px,100%);padding:28px;border:1px solid rgba(240,0,36,.32);border-radius:20px;background:var(--panel);box-shadow:0 25px 80px rgba(0,0,0,.4)}.brand{display:flex;align-items:center;gap:10px;margin-bottom:25px;font-size:20px;font-weight:900}.adminBrandLogo{display:block;width:270px;max-width:100%;height:auto;filter:drop-shadow(0 8px 22px rgba(240,0,36,.16))}.top .adminBrandLogo{width:205px}.logo{display:grid;place-items:center;width:38px;height:38px;border-radius:10px;background:linear-gradient(145deg,#ff4b58,#9c0019)}h1,h2,h3,p{margin-top:0}.muted{color:var(--muted)}.form{display:grid;gap:14px}.form label{display:grid;gap:6px;font-size:12px;color:#c8cdd4;font-weight:750}.field{width:100%;height:46px;border:1px solid var(--line);border-radius:10px;background:#0d1116;color:white;padding:0 13px;outline:none}.field:focus{border-color:var(--red)}textarea.field{height:auto;min-height:110px;padding:12px;resize:vertical}.btn{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:0 17px;border:1px solid transparent;border-radius:10px;background:none;color:white;font-weight:800}.primary{background:linear-gradient(135deg,#ff1738,#c90020);box-shadow:0 10px 28px rgba(240,0,36,.17)}.outline{border-color:var(--line);background:rgba(255,255,255,.035)}.danger{background:#6d1620}.message{min-height:21px;color:#ffbf68;font-size:13px}.authActions{display:grid;grid-template-columns:1fr 1fr;gap:9px}.app{min-height:100vh}.top{position:sticky;top:0;z-index:20;background:rgba(8,10,13,.9);backdrop-filter:blur(16px);border-bottom:1px solid var(--line)}.topRow{width:min(calc(100% - 30px),var(--max));height:68px;margin:auto;display:flex;align-items:center;justify-content:space-between}.layout{width:min(calc(100% - 30px),var(--max));margin:28px auto 80px;display:grid;grid-template-columns:220px 1fr;gap:22px}.side{position:sticky;top:92px;height:max-content;padding:12px;border:1px solid var(--line);border-radius:15px;background:var(--panel)}.tab{width:100%;display:flex;padding:12px;border:0;border-radius:9px;background:none;color:#aeb5be;text-align:left;font-weight:750}.tab.active{background:linear-gradient(135deg,rgba(240,0,36,.24),rgba(240,0,36,.08));color:white;box-shadow:inset 3px 0 0 var(--red)}.panel{display:none}.panel.active{display:block}.panelHead{display:flex;align-items:end;justify-content:space-between;gap:15px;margin-bottom:20px}.panelHead h1{margin-bottom:0;font-size:38px;letter-spacing:-1.5px}.card{padding:20px;border:1px solid var(--line);border-radius:16px;background:var(--panel)}.toolbar{display:flex;gap:10px;margin-bottom:15px}.tableWrap{overflow:auto;border:1px solid var(--line);border-radius:14px}.table{width:100%;border-collapse:collapse;min-width:800px}.table th,.table td{padding:13px 14px;border-bottom:1px solid var(--line);text-align:left;font-size:13px}.table th{color:#8f98a5;font-size:10px;text-transform:uppercase;letter-spacing:.7px}.table tr:last-child td{border-bottom:0}.pill{display:inline-flex;padding:5px 8px;border-radius:7px;background:#242b35;font-size:10px;font-weight:900;text-transform:uppercase}.activeP{background:rgba(82,210,115,.13);color:#70e58d}.soldP{background:rgba(239,51,64,.15);color:#ff6075}.draftP{color:#d1a55a}.actions{display:flex;gap:7px}.small{min-height:34px;padding:0 11px;font-size:12px}.empty{padding:50px;text-align:center;color:var(--muted)}.settingsGrid,.editorGrid{display:grid;grid-template-columns:1fr 1fr;gap:14px}.full{grid-column:1/-1}.checks{display:flex;flex-wrap:wrap;gap:16px}.check{display:flex!important;grid-template-columns:auto 1fr!important;align-items:center;gap:8px!important}.check input{width:17px;height:17px}.modal{width:min(820px,calc(100% - 22px));max-height:calc(100vh - 24px);padding:0;border:1px solid #353e4a;border-radius:19px;background:var(--panel);color:white}.modal::backdrop{background:rgba(0,0,0,.8)}.modalIn{position:relative;max-height:calc(100vh - 24px);overflow:auto;padding:25px}.close{position:absolute;top:14px;right:14px;width:36px;height:36px;border:1px solid var(--line);border-radius:9px;background:#1b2028;color:white;font-size:22px}.previews{display:grid;grid-template-columns:repeat(4,1fr);gap:9px}.preview{position:relative;height:110px;border:1px solid var(--line);border-radius:10px;overflow:hidden;background:#0a0d11}.preview img{width:100%;height:100%;object-fit:cover}.preview button{position:absolute;top:5px;right:5px;width:28px;height:28px;border:0;border-radius:7px;background:rgba(0,0,0,.75);color:white}.orderCard{display:grid;grid-template-columns:1fr auto;gap:15px;padding:17px;border:1px solid var(--line);border-radius:13px;background:#12171d;margin-bottom:10px}.orderMeta{color:#8f98a4;font-size:12px}.orderNote{white-space:pre-wrap;color:#b4bac2}.toast{position:fixed;right:18px;bottom:18px;z-index:100;padding:12px 15px;border:1px solid var(--line);border-radius:10px;background:#1b2028;box-shadow:0 15px 40px rgba(0,0,0,.45)}
@@ -22,7 +22,14 @@
 .reviewAdminMeta{display:flex;flex-wrap:wrap;gap:8px;color:var(--muted);font-size:11px}
 .reviewAdminActions{display:flex;align-items:start;gap:8px}
 .reviewFormGrid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
-@media(max-width:680px){.reviewAdminCard{grid-template-columns:1fr}.reviewFormGrid{grid-template-columns:1fr}}
+.seoBox{grid-column:1/-1;padding:16px;border:1px solid rgba(240,0,36,.28);border-radius:13px;background:linear-gradient(145deg,#12161c,#0d1015)}
+.seoBox h4{margin:0 0 9px;font-size:14px}.seoBox p{margin:5px 0;color:var(--muted);font-size:12px;line-height:1.55}
+.slugControl{display:grid;grid-template-columns:1fr auto;gap:8px}.slugPreview{display:block;margin-top:5px;color:#8fd7a2;font-size:11px;overflow-wrap:anywhere}
+.seoPreview{grid-column:1/-1;padding:15px;border:1px solid var(--line);border-radius:12px;background:#0c1015}
+.seoPreviewTitle{color:#8ab4f8;font-size:17px;line-height:1.25}.seoPreviewUrl{margin:5px 0;color:#8fd7a2;font-size:11px;overflow-wrap:anywhere}.seoPreviewDescription{color:#bdc1c6;font-size:12px;line-height:1.5}
+.counter{float:right;color:var(--muted);font-weight:600}
+.sellerCard{display:grid;grid-template-columns:1fr auto;gap:18px;padding:18px;border:1px solid var(--line);border-radius:14px;background:#11161d;margin-bottom:11px}.sellerCard h3{margin:7px 0}.sellerCardMeta{display:flex;flex-wrap:wrap;gap:8px;color:var(--muted);font-size:11px}.sellerCardPrice{font-size:18px;font-weight:900}.sellerActions{display:flex;align-items:start;gap:8px}.sellerStatus{display:inline-flex;padding:5px 8px;border-radius:7px;background:#242b35;color:#c5cbd3;font-size:10px;font-weight:900;text-transform:uppercase}.sellerStatus.new{background:rgba(255,191,104,.13);color:#ffbf68}.sellerStatus.offer_sent,.sellerStatus.accepted{background:rgba(82,210,115,.13);color:#70e58d}.sellerStatus.rejected,.sellerStatus.cancelled{background:rgba(240,0,36,.14);color:#ff6075}.sellerDetailGrid{display:grid;grid-template-columns:1fr 1fr;gap:12px}.sellerDetail{padding:12px;border:1px solid var(--line);border-radius:10px;background:#0d1116}.sellerDetail small{display:block;margin-bottom:5px;color:var(--muted);font-size:10px;text-transform:uppercase}.sellerDetail strong,.sellerDetail span{overflow-wrap:anywhere}.sellerWide{grid-column:1/-1}.sellerText{white-space:pre-wrap;color:#c1c7cf}.sellerShots{display:grid;grid-template-columns:repeat(3,1fr);gap:9px}.sellerShot{height:150px;border:1px solid var(--line);border-radius:10px;overflow:hidden;background:#090c10}.sellerShot img{width:100%;height:100%;object-fit:cover}.sellerAdminGrid{display:grid;grid-template-columns:1fr 1fr;gap:12px}.sellerModalActions{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px;margin-top:16px}.sellerContactActions{display:flex;flex-wrap:wrap;gap:8px;margin:13px 0}
+@media(max-width:680px){.reviewAdminCard,.sellerCard{grid-template-columns:1fr}.sellerDetailGrid,.sellerAdminGrid{grid-template-columns:1fr}.sellerWide{grid-column:auto}.sellerShots{grid-template-columns:1fr 1fr}.reviewFormGrid{grid-template-columns:1fr}}
 @media(max-width:780px){.layout{grid-template-columns:1fr}.side{position:static;display:flex;overflow:auto}.tab{width:auto;white-space:nowrap}.settingsGrid,.editorGrid{grid-template-columns:1fr}.full{grid-column:auto}.authActions{grid-template-columns:1fr}.panelHead{align-items:start;flex-direction:column}.previews{grid-template-columns:repeat(2,1fr)}.orderCard{grid-template-columns:1fr}}
 </style>
 </head>
@@ -31,17 +38,41 @@
 
 <section id="claimView" class="center hidden"><div class="auth"><div class="brand"><img class="adminBrandLogo" src="assets/torndeals-logo.png" alt="TornDeals Admin"></div><h1>Activate owner account</h1><p class="muted">Enter the one-time setup code you received.</p><form id="claimForm" class="form"><label>Setup code<input id="claimCode" class="field" required autocomplete="off"></label><div id="claimMsg" class="message"></div><button class="btn primary" type="submit">Activate admin</button><button class="btn outline" id="claimLogout" type="button">Sign out</button></form></div></section>
 
-<section id="appView" class="app hidden"><header class="top"><div class="topRow"><div class="brand" style="margin:0"><img class="adminBrandLogo" src="assets/torndeals-logo.png" alt="TornDeals"></div><button id="logoutBtn" class="btn outline small">Sign out</button></div></header><div class="layout"><aside class="side"><button class="tab active" data-tab="products">Products</button><button class="tab" data-tab="orders">Orders</button><button class="tab" data-tab="reviews">Reviews</button><button class="tab" data-tab="settings">Store settings</button></aside><main>
-<section id="productsPanel" class="panel active"><div class="panelHead"><div><div class="muted">DIRECT STORE · ADMIN v2.2</div><h1>Products</h1></div><button id="addProduct" class="btn primary" type="button">Add product</button></div><div class="toolbar"><input id="productSearch" class="field" placeholder="Search products"><select id="productStatus" class="field" style="max-width:170px"><option value="all">All statuses</option><option value="active">Active</option><option value="sold">Sold</option><option value="draft">Draft</option></select></div><div class="tableWrap"><table class="table"><thead><tr><th>Product</th><th>Type</th><th>Game</th><th>Price</th><th>Stock</th><th>Status</th><th></th></tr></thead><tbody id="productRows"></tbody></table><div id="productEmpty" class="empty">No products yet.</div></div></section>
+<section id="appView" class="app hidden"><header class="top"><div class="topRow"><div class="brand" style="margin:0"><img class="adminBrandLogo" src="assets/torndeals-logo.png" alt="TornDeals"></div><button id="logoutBtn" class="btn outline small">Sign out</button></div></header><div class="layout"><aside class="side"><button class="tab active" data-tab="products">Products</button><button class="tab" data-tab="orders">Orders</button><button class="tab" data-tab="sellers">Seller requests</button><button class="tab" data-tab="reviews">Reviews</button><button class="tab" data-tab="settings">Store settings</button></aside><main>
+<section id="productsPanel" class="panel active"><div class="panelHead"><div><div class="muted">DIRECT STORE · ADMIN v2.4</div><h1>Products</h1></div><button id="addProduct" class="btn primary" type="button">Add product</button></div><div class="toolbar"><input id="productSearch" class="field" placeholder="Search products"><select id="productStatus" class="field" style="max-width:170px"><option value="all">All statuses</option><option value="active">Active</option><option value="sold">Sold</option><option value="draft">Draft</option></select></div><div class="tableWrap"><table class="table"><thead><tr><th>Product</th><th>Type</th><th>Game</th><th>Price</th><th>Stock</th><th>Status</th><th></th></tr></thead><tbody id="productRows"></tbody></table><div id="productEmpty" class="empty">No products yet.</div></div></section>
 
 <section id="ordersPanel" class="panel"><div class="panelHead"><div><div class="muted">CUSTOMERS</div><h1>Orders</h1></div><button id="refreshOrders" class="btn outline">Refresh</button></div><div id="ordersList"></div><div id="ordersEmpty" class="empty card">No order requests yet.</div></section>
 
+<section id="sellersPanel" class="panel"><div class="panelHead"><div><div class="muted">PRIVATE INTAKE</div><h1>Seller requests</h1><p class="muted">Review account submissions, send offers, and move accepted cases to a private Discord conversation.</p></div><button id="refreshSellers" class="btn outline" type="button">Refresh</button></div><div class="toolbar"><input id="sellerSearch" class="field" placeholder="Search reference, title, seller, email, or Discord"><select id="sellerStatus" class="field" style="max-width:200px"><option value="all">All statuses</option><option value="new">New</option><option value="reviewing">Reviewing</option><option value="offer_sent">Offer sent</option><option value="accepted">Accepted</option><option value="verification">Verification</option><option value="payment_pending">Payment pending</option><option value="completed">Completed</option><option value="rejected">Rejected</option><option value="cancelled">Cancelled</option></select></div><div id="sellersList"></div><div id="sellersEmpty" class="empty card">No seller submissions yet.</div></section>
+
 <section id="reviewsPanel" class="panel"><div class="panelHead"><div><div class="muted">SOCIAL PROOF</div><h1>Reviews</h1><p class="muted">Publish only genuine customer feedback. You control the name, stars, message, order, visibility, and verified-purchase badge.</p></div><button id="addReview" class="btn primary">Add review</button></div><div id="reviewsList"></div><div id="reviewsEmpty" class="empty card">No reviews yet.</div></section>
 
-<section id="settingsPanel" class="panel"><div class="panelHead"><div><div class="muted">STORE</div><h1>Settings</h1></div></div><form id="settingsForm" class="card form settingsGrid"><label>Brand name<input class="field" name="brand_name" required maxlength="50"></label><label>Default currency<select class="field" name="default_currency"><option>USD</option><option>EUR</option><option>GBP</option><option>CAD</option><option>AUD</option><option>INR</option><option>PKR</option><option>AED</option></select></label><label class="full">Homepage tagline<input class="field" name="tagline" required maxlength="180"></label><label>WhatsApp number<input class="field" name="whatsapp_number" placeholder="358..."></label><label>Telegram username<input class="field" name="telegram_username" placeholder="username"></label><label>Support email<input class="field" type="email" name="support_email"></label><label>Instagram username<input class="field" name="instagram_username"></label><label class="full">Announcement<input class="field" name="announcement" maxlength="160"></label><h3 class="sectionTitle">Crypto payment wallets</h3><p class="help full">Add public receiving addresses only. Never paste a seed phrase, private key, exchange password, recovery code, or secret API key here.</p><label class="check"><input type="checkbox" name="usdt_enabled"> Enable USDT</label><label>USDT network<input class="field" name="usdt_network" maxlength="30" placeholder="TRC20"></label><label class="full">USDT receiving address<input class="field tx" name="usdt_address" maxlength="180"></label><label class="check"><input type="checkbox" name="btc_enabled"> Enable Bitcoin</label><label class="full">Bitcoin receiving address<input class="field tx" name="btc_address" maxlength="180"></label><label class="check"><input type="checkbox" name="ltc_enabled"> Enable Litecoin</label><label class="full">Litecoin receiving address<input class="field tx" name="ltc_address" maxlength="180"></label><label class="check"><input type="checkbox" name="eth_enabled"> Enable Ethereum</label><label class="full">Ethereum receiving address<input class="field tx" name="eth_address" maxlength="180"></label><label class="full">Payment instructions<textarea class="field" name="crypto_payment_note" maxlength="500" placeholder="Send the exact amount on the selected network."></textarea></label><div id="settingsMsg" class="message full"></div><button class="btn primary" type="submit">Save settings</button></form></section>
+<section id="settingsPanel" class="panel"><div class="panelHead"><div><div class="muted">STORE</div><h1>Settings</h1></div></div><form id="settingsForm" class="card form settingsGrid"><label>Brand name<input class="field" name="brand_name" required maxlength="50"></label><label>Default currency<select class="field" name="default_currency"><option>USD</option><option>EUR</option><option>GBP</option><option>CAD</option><option>AUD</option><option>INR</option><option>PKR</option><option>AED</option></select></label><label class="full">Homepage tagline<input class="field" name="tagline" required maxlength="180"></label><label>WhatsApp number<input class="field" name="whatsapp_number" placeholder="358..."></label><label>Telegram username<input class="field" name="telegram_username" placeholder="username"></label><label>Support email<input class="field" type="email" name="support_email"></label><label>Instagram username<input class="field" name="instagram_username"></label><label class="full">Announcement<input class="field" name="announcement" maxlength="160"></label><h3 class="sectionTitle">Seller intake</h3><p class="help full">Seller submissions and screenshots stay private in the admin dashboard. The public form never asks for passwords, 2FA codes, or recovery codes.</p><label class="check"><input type="checkbox" name="seller_program_enabled"> Enable seller submissions</label><label>Verification period, hours<input class="field" name="seller_verification_hours" type="number" min="1" max="168" value="48"></label><label class="full">Discord server invite URL<input class="field" name="discord_invite_url" type="url" maxlength="500" placeholder="https://discord.gg/..."></label><label class="full">Seller payment methods<input class="field" name="seller_payment_methods" maxlength="250" placeholder="PayPal, Cash App, cryptocurrency, or Revolut"></label><label class="full">Seller programme note<textarea class="field" name="seller_program_note" maxlength="500"></textarea></label><h3 class="sectionTitle">Crypto payment wallets</h3><p class="help full">Add public receiving addresses only. Never paste a seed phrase, private key, exchange password, recovery code, or secret API key here.</p><label class="check"><input type="checkbox" name="usdt_enabled"> Enable USDT</label><label>USDT network<input class="field" name="usdt_network" maxlength="30" placeholder="TRC20"></label><label class="full">USDT receiving address<input class="field tx" name="usdt_address" maxlength="180"></label><label class="check"><input type="checkbox" name="btc_enabled"> Enable Bitcoin</label><label class="full">Bitcoin receiving address<input class="field tx" name="btc_address" maxlength="180"></label><label class="check"><input type="checkbox" name="ltc_enabled"> Enable Litecoin</label><label class="full">Litecoin receiving address<input class="field tx" name="ltc_address" maxlength="180"></label><label class="check"><input type="checkbox" name="eth_enabled"> Enable Ethereum</label><label class="full">Ethereum receiving address<input class="field tx" name="eth_address" maxlength="180"></label><label class="full">Payment instructions<textarea class="field" name="crypto_payment_note" maxlength="500" placeholder="Send the exact amount on the selected network."></textarea></label><div id="settingsMsg" class="message full"></div><button class="btn primary" type="submit">Save settings</button></form></section>
 </main></div></section>
 
-<dialog id="editor" class="modal"><div class="modalIn"><button id="closeEditor" class="close">×</button><h2 id="editorTitle">Add product</h2><form id="productForm" class="form editorGrid"><input type="hidden" name="id"><label>Product type<select class="field" name="product_kind"><option value="account">Game account</option><option value="item">Digital item</option></select></label><label>Title<input class="field" name="title" maxlength="90" required></label><label>Game or category<input class="field" name="game" maxlength="60" required></label><label>Platform<input class="field" name="platform" maxlength="40" required placeholder="PC, PlayStation, Android..."></label><label>Region<input class="field" name="region" maxlength="40" required placeholder="Global, EU, NA..."></label><label>Account or item type<input class="field" name="account_type" maxlength="50"></label><label>Price<input class="field" name="price" type="number" min="0" step=".01" required></label><label>Currency<select class="field" name="currency"><option>USD</option><option>EUR</option><option>GBP</option><option>CAD</option><option>AUD</option><option>INR</option><option>PKR</option><option>AED</option></select></label><label>Stock quantity<input class="field" name="stock_quantity" type="number" min="0" max="100000" value="1" required></label><label>Warranty days<input class="field" name="warranty_days" type="number" min="0" max="365" value="0"></label><h3 class="sectionTitle">Exact crypto prices</h3><p class="help full">Enter the exact amount a buyer must send. Leave a field empty to hide that payment method for this product.</p><label>USDT amount<input class="field" name="crypto_usdt" type="number" min="0" step="0.000001" placeholder="Example: 125"></label><label>Bitcoin amount<input class="field" name="crypto_btc" type="number" min="0" step="0.00000001" placeholder="Example: 0.00125"></label><label>Litecoin amount<input class="field" name="crypto_ltc" type="number" min="0" step="0.00000001"></label><label>Ethereum amount<input class="field" name="crypto_eth" type="number" min="0" step="0.00000001"></label><label>Status<select class="field" name="status"><option value="active">Active</option><option value="draft">Draft</option><option value="sold">Sold</option></select></label><label class="full">Short description<input class="field" name="short_description" minlength="10" maxlength="220" required></label><label class="full">Full description<textarea class="field" name="description" minlength="20" maxlength="3000" required></textarea></label><label class="full">Details, one per line<textarea class="field" name="details" placeholder="Level: 80&#10;Skins: 24&#10;Delivery: Email change"></textarea></label><label class="full">Delivery note<textarea class="field" name="delivery_note" maxlength="500" placeholder="How the product will be delivered"></textarea></label><label class="full">Photos, up to 8<input id="images" class="field" type="file" accept="image/jpeg,image/png,image/webp" multiple></label><div id="previews" class="previews full"></div><div class="checks full"><label class="check"><input type="checkbox" name="featured"> Featured product</label></div><div id="productMsg" class="message full"></div><div class="full" style="display:flex;gap:9px;justify-content:space-between"><button id="deleteProduct" class="btn danger hidden" type="button">Delete</button><div style="display:flex;gap:9px;margin-left:auto"><button id="cancelEditor" class="btn outline" type="button">Cancel</button><button id="saveProduct" class="btn primary" type="submit">Save product</button></div></div></form></div></dialog>
+<dialog id="editor" class="modal"><div class="modalIn"><button id="closeEditor" class="close">×</button><h2 id="editorTitle">Add product</h2><form id="productForm" class="form editorGrid"><input type="hidden" name="id"><label>Product type<select class="field" name="product_kind"><option value="account">Game account</option><option value="item">Digital item</option></select></label><label>Title<input class="field" name="title" maxlength="90" required></label><label>Game or category<input class="field" name="game" maxlength="60" required></label><label>Platform<input class="field" name="platform" maxlength="40" required placeholder="PC, PlayStation, Android..."></label><label>Region<input class="field" name="region" maxlength="40" required placeholder="Global, EU, NA..."></label><label>Account or item type<input class="field" name="account_type" maxlength="50"></label><label>Price<input class="field" name="price" type="number" min="0" step=".01" required></label><label>Currency<select class="field" name="currency"><option>USD</option><option>EUR</option><option>GBP</option><option>CAD</option><option>AUD</option><option>INR</option><option>PKR</option><option>AED</option></select></label><label>Stock quantity<input class="field" name="stock_quantity" type="number" min="0" max="100000" value="1" required></label><label>Warranty days<input class="field" name="warranty_days" type="number" min="0" max="365" value="0"></label><h3 class="sectionTitle">Exact crypto prices</h3><p class="help full">Enter the exact amount a buyer must send. Leave a field empty to hide that payment method for this product.</p><label>USDT amount<input class="field" name="crypto_usdt" type="number" min="0" step="0.000001" placeholder="Example: 125"></label><label>Bitcoin amount<input class="field" name="crypto_btc" type="number" min="0" step="0.00000001" placeholder="Example: 0.00125"></label><label>Litecoin amount<input class="field" name="crypto_ltc" type="number" min="0" step="0.00000001"></label><label>Ethereum amount<input class="field" name="crypto_eth" type="number" min="0" step="0.00000001"></label><label>Status<select class="field" name="status"><option value="active">Active</option><option value="draft">Draft</option><option value="sold">Sold</option></select></label><label class="full">Short description<input class="field" name="short_description" minlength="10" maxlength="220" required></label><label class="full">Full description<textarea class="field" name="description" minlength="20" maxlength="3000" required></textarea></label><label class="full">Details, one per line<textarea class="field" name="details" placeholder="Level: 80&#10;Skins: 24&#10;Delivery: Email change"></textarea></label><label class="full">Delivery note<textarea class="field" name="delivery_note" maxlength="500" placeholder="How the product will be delivered"></textarea></label>
+<h3 class="sectionTitle">Google SEO</h3>
+<div class="seoBox">
+  <h4>How this works</h4>
+  <p>The target phrases below are private planning notes. They are not published as a meta-keywords tag. Google uses the product page title, description, URL, visible content, links, and image text instead.</p>
+</div>
+<label class="full">Google page title <span id="seoTitleCount" class="counter">0 / 70</span><input class="field" name="seo_title" maxlength="70" required placeholder="Torn City Cash for Sale | $30 per Billion"></label>
+<label class="full">Google description <span id="seoDescriptionCount" class="counter">0 / 170</span><textarea class="field" name="seo_description" maxlength="170" required placeholder="A clear description that may appear in Google results."></textarea></label>
+<label class="full">Product URL keyword
+  <div class="slugControl"><input class="field" name="seo_slug" maxlength="100" pattern="[a-z0-9]+(?:-[a-z0-9]+)*" required placeholder="torn-city-cash"><button id="generateSlug" class="btn outline" type="button">Generate</button></div>
+  <span id="productUrlPreview" class="slugPreview">https://torndeals.me/product.html?slug=</span>
+</label>
+<label class="full">Main image description <span id="imageAltCount" class="counter">0 / 160</span><input class="field" name="image_alt" maxlength="160" required placeholder="Stacks representing 16 billion Torn City game cash"></label>
+<label class="full">Target search phrases, private <textarea class="field" name="target_keywords" maxlength="1200" placeholder="torn city cash for sale, torn cash price, buy torn city cash"></textarea></label>
+<p class="help full">Use commas or new lines. Maximum 20 phrases. These remain inside the owner-only admin area.</p>
+<div class="seoPreview">
+  <div id="seoPreviewTitle" class="seoPreviewTitle">Product title | TornDeals</div>
+  <div id="seoPreviewUrl" class="seoPreviewUrl">https://torndeals.me/product.html?slug=product</div>
+  <div id="seoPreviewDescription" class="seoPreviewDescription">Your Google description preview will appear here.</div>
+</div>
+<label class="full">Photos, up to 8<input id="images" class="field" type="file" accept="image/jpeg,image/png,image/webp" multiple></label><div id="previews" class="previews full"></div><div class="checks full"><label class="check"><input type="checkbox" name="featured"> Featured product</label></div><div id="productMsg" class="message full"></div><div class="full" style="display:flex;gap:9px;justify-content:space-between"><button id="deleteProduct" class="btn danger hidden" type="button">Delete</button><div style="display:flex;gap:9px;margin-left:auto"><button id="cancelEditor" class="btn outline" type="button">Cancel</button><button id="saveProduct" class="btn primary" type="submit">Save product</button></div></div></form></div></dialog>
+
+<dialog id="sellerEditor" class="modal"><div class="modalIn"><button id="closeSellerEditor" class="close" type="button">×</button><div class="muted">SELLER REQUEST</div><h2 id="sellerEditorTitle">Review submission</h2><div id="sellerDetails" class="sellerDetailGrid"></div><div class="sellerContactActions"><button id="copySellerEmail" class="btn outline small" type="button">Copy email</button><button id="copySellerDiscord" class="btn outline small" type="button">Copy Discord</button><button id="copySellerOffer" class="btn outline small" type="button">Copy offer message</button></div><h3>Private screenshots</h3><div id="sellerScreenshots" class="sellerShots"></div><form id="sellerAdminForm" class="form sellerAdminGrid" style="margin-top:18px"><label>Status<select class="field" name="status"><option value="new">New</option><option value="reviewing">Reviewing</option><option value="offer_sent">Offer sent</option><option value="accepted">Accepted</option><option value="verification">Verification</option><option value="payment_pending">Payment pending</option><option value="completed">Completed</option><option value="rejected">Rejected</option><option value="cancelled">Cancelled</option></select></label><label>Offer amount<input class="field" name="offered_price" type="number" min="0" step="0.01" placeholder="Leave empty until an offer is ready"></label><label>Offer currency<select class="field" name="offer_currency"><option>USD</option><option>EUR</option><option>GBP</option><option>CAD</option><option>AUD</option></select></label><label>Private Discord ticket URL<input class="field" name="discord_ticket_url" type="url" maxlength="500" placeholder="Optional ticket or channel link"></label><label class="sellerWide">Private admin notes<textarea class="field" name="admin_notes" maxlength="5000"></textarea></label><div id="sellerMsg" class="message sellerWide"></div><div class="sellerModalActions sellerWide"><button id="deleteSeller" class="btn danger" type="button">Delete submission</button><div style="display:flex;gap:9px;margin-left:auto"><button id="cancelSellerEditor" class="btn outline" type="button">Close</button><button id="saveSeller" class="btn primary" type="submit">Save review</button></div></div></form></div></dialog>
 
 <dialog id="reviewEditor" class="modal"><div class="modalIn"><button id="closeReviewEditor" class="close">×</button><h2 id="reviewEditorTitle">Add review</h2><form id="reviewForm" class="form reviewFormGrid"><input type="hidden" name="id"><label>Customer name<input class="field" name="customer_name" minlength="2" maxlength="60" required placeholder="Example: Erik"></label><label>Star rating<select class="field" name="stars"><option value="5">5 stars</option><option value="4">4 stars</option><option value="3">3 stars</option><option value="2">2 stars</option><option value="1">1 star</option></select></label><label class="full">Review message<textarea class="field" name="body" minlength="5" maxlength="500" required placeholder="Paste the customer's genuine feedback"></textarea></label><label>Display order<input class="field" name="sort_order" type="number" min="-100000" max="100000" value="0"></label><div class="checks"><label class="check"><input type="checkbox" name="is_verified"> Verified purchase</label><label class="check"><input type="checkbox" name="is_published" checked> Published</label></div><p class="help full">The verified badge should only be used when you can match the review to a completed order.</p><div id="reviewMsg" class="message full"></div><div class="full" style="display:flex;gap:9px;justify-content:space-between"><button id="deleteReview" class="btn danger hidden" type="button">Delete</button><div style="display:flex;gap:9px;margin-left:auto"><button id="cancelReviewEditor" class="btn outline" type="button">Cancel</button><button id="saveReview" class="btn primary" type="submit">Save review</button></div></div></form></div></dialog>
 <div id="toast" class="toast hidden"></div>
@@ -51,7 +82,7 @@
 "use strict";
 const BASE="https://zzywhnvevnoattbamfse.supabase.co",KEY="sb_publishable_n707H1yGUvAJ0wElEBRhPw_K_8S2Evw",SITE="https://torndeals.me";
 const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
-const state={access:localStorage.getItem("td_access")||"",refresh:localStorage.getItem("td_refresh")||"",products:[],orders:[],reviews:[],settings:{},editing:null,reviewEditing:null,existing:[],pending:[],remove:[]};
+const state={access:localStorage.getItem("td_access")||"",refresh:localStorage.getItem("td_refresh")||"",products:[],orders:[],reviews:[],sellers:[],settings:{},seoPrivate:{},editing:null,reviewEditing:null,sellerEditing:null,sellerObjectUrls:[],existing:[],pending:[],remove:[]};
 let refreshPromise=null;
 const esc=v=>String(v??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
 const money=(n,c)=>{try{return new Intl.NumberFormat(undefined,{style:"currency",currency:c||"USD"}).format(Number(n||0))}catch{return `${c||"USD"} ${Number(n||0)}`}};
@@ -104,8 +135,18 @@ async function boot(){const hash=new URLSearchParams(location.hash.replace(/^#/,
 async function signIn(e){e.preventDefault();$("#loginMsg").textContent="Signing in...";try{const d=await api("/auth/v1/token?grant_type=password",{method:"POST",body:JSON.stringify({email:$("#email").value.trim(),password:$("#password").value})},false);saveTokens(d);await boot()}catch(err){$("#loginMsg").textContent=err.message}}
 async function signup(){const email=$("#email").value.trim(),password=$("#password").value;if(!email||password.length<6){$("#loginMsg").textContent="Enter an email and a password with at least 6 characters.";return}$("#loginMsg").textContent="Creating account...";try{const d=await api(`/auth/v1/signup?redirect_to=${encodeURIComponent(SITE+"/admin.html")}`,{method:"POST",body:JSON.stringify({email,password})},false);if(d?.access_token){saveTokens(d);await boot()}else $("#loginMsg").textContent="Account created. Confirm the email, then return here and sign in."}catch(err){$("#loginMsg").textContent=err.message}}
 async function claim(e){e.preventDefault();$("#claimMsg").textContent="Activating...";try{await api("/rest/v1/rpc/claim_admin",{method:"POST",body:JSON.stringify({p_bootstrap_code:$("#claimCode").value.trim().toUpperCase()})});$("#claimMsg").textContent="Activated.";await boot()}catch(err){$("#claimMsg").textContent=err.message}}
-async function loadAll(){await Promise.all([loadProducts(),loadOrders(),loadReviews(),loadSettings()])}
-async function loadProducts(){state.products=await api("/rest/v1/listings?select=*&order=created_at.desc")||[];renderProducts()}
+async function loadAll(){await Promise.all([loadProducts(),loadOrders(),loadReviews(),loadSellerRequests(),loadSettings()])}
+async function loadProducts(){
+  const productsPromise=api("/rest/v1/listings?select=*&order=created_at.desc");
+  const privatePromise=api("/rest/v1/listing_seo_private?select=listing_id,target_keywords").catch(error=>{
+    console.warn("Private SEO phrases could not be loaded:",error);
+    return [];
+  });
+  const [products,privateRows]=await Promise.all([productsPromise,privatePromise]);
+  state.products=products||[];
+  state.seoPrivate=Object.fromEntries((privateRows||[]).map(row=>[row.listing_id,row.target_keywords||[]]));
+  renderProducts();
+}
 function renderProducts(){const q=$("#productSearch").value.trim().toLowerCase(),status=$("#productStatus").value;const rows=state.products.filter(p=>(status==="all"||p.status===status)&&(!q||[p.title,p.game,p.platform,p.region].join(" ").toLowerCase().includes(q)));$("#productRows").innerHTML=rows.map(p=>`<tr><td><strong>${esc(p.title)}</strong><br><span class="muted">${esc(p.platform)} · ${esc(p.region)}</span></td><td>${p.product_kind==="item"?"Item":"Account"}</td><td>${esc(p.game)}</td><td>${esc(money(p.price,p.currency))}</td><td>${p.stock_quantity}</td><td><span class="pill ${p.status==="active"?"activeP":p.status==="sold"?"soldP":"draftP"}">${esc(p.status)}</span></td><td><button class="btn outline small" type="button" data-edit="${p.id}">Edit</button></td></tr>`).join("");$("#productEmpty").classList.toggle("hidden",rows.length>0)}
 async function loadOrders(){try{state.orders=await api("/rest/v1/orders?select=*,listings(title,price,currency,product_kind)&order=created_at.desc")||[]}catch{state.orders=[]}renderOrders()}
 function renderOrders(){
@@ -115,6 +156,77 @@ function renderOrders(){
   $$("[data-order-status]").forEach(s=>s.onchange=async()=>{try{await api(`/rest/v1/orders?id=eq.${s.dataset.orderStatus}`,{method:"PATCH",headers:{"Prefer":"return=minimal"},body:JSON.stringify({status:s.value,updated_at:new Date().toISOString()})});toast("Order updated")}catch(e){toast(e.message)}});
   $$("[data-copy]").forEach(b=>b.onclick=async()=>{try{await navigator.clipboard.writeText(b.dataset.copy);toast("Transaction hash copied")}catch{prompt("Copy transaction hash:",b.dataset.copy)}});
 }
+function sellerStatusLabel(status){return String(status||"new").replaceAll("_"," ")}
+async function loadSellerRequests(){state.sellers=await api("/rest/v1/seller_requests?select=*&order=created_at.desc")||[];renderSellerRequests()}
+function renderSellerRequests(){
+  const search=$("#sellerSearch").value.trim().toLowerCase();
+  const status=$("#sellerStatus").value;
+  const rows=state.sellers.filter(request=>{
+    const text=[request.reference_code,request.title,request.game,request.seller_name,request.contact_email,request.discord_username].join(" ").toLowerCase();
+    return (!search||text.includes(search))&&(status==="all"||request.status===status);
+  });
+  $("#sellersList").innerHTML=rows.map(request=>`<article class="sellerCard"><div><span class="sellerStatus ${esc(request.status)}">${esc(sellerStatusLabel(request.status))}</span><h3>${esc(request.title)}</h3><div class="sellerCardMeta"><span>${esc(request.reference_code)}</span><span>${esc(request.game)}</span><span>${esc(request.seller_name)}</span><span>${esc(request.contact_email)}</span><span>${new Date(request.created_at).toLocaleString()}</span></div></div><div><div class="sellerCardPrice">${esc(money(request.asking_price,request.asking_currency))}</div><div class="sellerActions" style="margin-top:10px"><button class="btn outline small" type="button" data-open-seller="${request.id}">Review</button></div></div></article>`).join("");
+  $("#sellersEmpty").classList.toggle("hidden",rows.length>0);
+}
+function formatNumber(value){return value===null||value===undefined||value===""?"Not provided":Number(value).toLocaleString()}
+function revokeSellerUrls(){state.sellerObjectUrls.forEach(url=>URL.revokeObjectURL(url));state.sellerObjectUrls=[]}
+function encodeStoragePath(path){return String(path).split("/").map(encodeURIComponent).join("/")}
+async function storageFetch(path,options={},retry=true){
+  const response=await fetch(BASE+path,{...options,headers:{"apikey":KEY,"Authorization":`Bearer ${state.access}`,...(options.headers||{})}});
+  if(response.status===401&&retry&&await refreshSession())return storageFetch(path,options,false);
+  if(!response.ok){const text=await response.text();let data=null;try{data=text?JSON.parse(text):null}catch{data=text}const error=new Error(data?.message||data?.error||text||`Storage request failed ${response.status}`);error.status=response.status;throw error}
+  return response;
+}
+async function loadSellerScreenshots(paths){
+  revokeSellerUrls();
+  const box=$("#sellerScreenshots");
+  if(!paths.length){box.innerHTML='<div class="sellerDetail sellerWide">No screenshots.</div>';return}
+  box.innerHTML=paths.map((_,index)=>`<div class="sellerShot" id="sellerShot${index}"><div class="empty" style="padding:35px 8px">Loading...</div></div>`).join("");
+  await Promise.all(paths.map(async(path,index)=>{
+    try{
+      const response=await storageFetch(`/storage/v1/object/authenticated/seller-submissions/${encodeStoragePath(path)}`);
+      const url=URL.createObjectURL(await response.blob());state.sellerObjectUrls.push(url);
+      $(`#sellerShot${index}`).innerHTML=`<a href="${url}" target="_blank"><img src="${url}" alt="Private seller screenshot ${index+1}"></a>`;
+    }catch(error){$(`#sellerShot${index}`).innerHTML=`<div class="empty" style="padding:25px 8px">${esc(error.message)}</div>`}
+  }));
+}
+function sellerDetailsHtml(request){
+  const total=[request.gym_strength,request.gym_defense,request.gym_speed,request.gym_dexterity].reduce((sum,value)=>sum+Number(value||0),0);
+  const details=[
+    ["Reference",request.reference_code],["Game",request.game],["Platform",request.platform],["Region",request.region],
+    ["Seller",request.seller_name],["Email",request.contact_email],["Discord",request.discord_username||"Not provided"],
+    ["Asking price",money(request.asking_price,request.asking_currency)],["Preferred payment",request.payment_preference||"Not provided"],
+    ["Account age",request.account_age_days===null?"Not provided":`${formatNumber(request.account_age_days)} days`],["Level",formatNumber(request.level)],["Cash balance",formatNumber(request.cash_balance)],
+    ["Strength",formatNumber(request.gym_strength)],["Defense",formatNumber(request.gym_defense)],["Speed",formatNumber(request.gym_speed)],["Dexterity",formatNumber(request.gym_dexterity)],["Total stats",formatNumber(total)]
+  ];
+  return details.map(([label,value])=>`<div class="sellerDetail"><small>${esc(label)}</small><strong>${esc(value)}</strong></div>`).join("")+`<div class="sellerDetail sellerWide"><small>Items and valuables</small><div class="sellerText">${esc(request.items_summary||"Not provided")}</div></div><div class="sellerDetail sellerWide"><small>Full description</small><div class="sellerText">${esc(request.description)}</div></div>`;
+}
+async function openSellerRequest(requestOrId){
+  const request=typeof requestOrId==="string"?state.sellers.find(item=>item.id===requestOrId):requestOrId;
+  if(!request)return;
+  state.sellerEditing=request;
+  $("#sellerEditorTitle").textContent=`${request.reference_code} · ${request.title}`;
+  $("#sellerDetails").innerHTML=sellerDetailsHtml(request);
+  const form=$("#sellerAdminForm");form.reset();form.elements.status.value=request.status||"new";form.elements.offered_price.value=request.offered_price??"";form.elements.offer_currency.value=request.offer_currency||"USD";form.elements.discord_ticket_url.value=request.discord_ticket_url||"";form.elements.admin_notes.value=request.admin_notes||"";$("#sellerMsg").textContent="";
+  $("#sellerEditor").showModal();
+  await loadSellerScreenshots(Array.isArray(request.screenshot_paths)?request.screenshot_paths:[]);
+}
+function closeSellerRequest(){revokeSellerUrls();state.sellerEditing=null;if($("#sellerEditor").open)$("#sellerEditor").close()}
+async function saveSellerRequest(event){
+  event.preventDefault();if(!state.sellerEditing)return;
+  const form=new FormData(event.currentTarget);const offered=String(form.get("offered_price")||"").trim();
+  const payload={status:String(form.get("status")),offered_price:offered===""?null:Number(offered),offer_currency:String(form.get("offer_currency")||"USD"),discord_ticket_url:String(form.get("discord_ticket_url")||"").trim(),admin_notes:String(form.get("admin_notes")||"").trim(),updated_at:new Date().toISOString()};
+  $("#saveSeller").disabled=true;$("#sellerMsg").textContent="Saving...";
+  try{await api(`/rest/v1/seller_requests?id=eq.${state.sellerEditing.id}`,{method:"PATCH",headers:{"Prefer":"return=minimal"},body:JSON.stringify(payload)});toast("Seller request updated");closeSellerRequest();await loadSellerRequests()}catch(error){$("#sellerMsg").textContent=error.message}finally{$("#saveSeller").disabled=false}
+}
+async function removeSellerScreenshots(paths){if(!paths.length)return;await storageFetch("/storage/v1/object/seller-submissions",{method:"DELETE",headers:{"Content-Type":"application/json"},body:JSON.stringify({prefixes:paths})})}
+async function deleteSellerRequest(){
+  if(!state.sellerEditing||!confirm(`Delete ${state.sellerEditing.reference_code}? This also deletes its screenshots.`))return;
+  try{await removeSellerScreenshots(Array.isArray(state.sellerEditing.screenshot_paths)?state.sellerEditing.screenshot_paths:[]);await api(`/rest/v1/seller_requests?id=eq.${state.sellerEditing.id}`,{method:"DELETE",headers:{"Prefer":"return=minimal"}});toast("Seller request deleted");closeSellerRequest();await loadSellerRequests()}catch(error){$("#sellerMsg").textContent=error.message}
+}
+async function copyValue(value,button){if(!value){toast("Nothing to copy");return}await navigator.clipboard.writeText(value);const original=button.textContent;button.textContent="Copied";setTimeout(()=>button.textContent=original,1200)}
+function sellerOfferMessage(){const request=state.sellerEditing;if(!request)return "";const form=$("#sellerAdminForm");const offer=String(form.elements.offered_price.value||"").trim();const currency=form.elements.offer_currency.value||"USD";const hours=Number(state.settings.seller_verification_hours||48);return `TornDeals offer for ${request.reference_code}\n\nAccount: ${request.title}\nOffer: ${offer?money(offer,currency):"Offer amount not set"}\nVerification period: up to ${hours} hours\n\nNever send an email password, game password, 2FA code, or recovery code. Account transfer and verification will be coordinated privately.`}
+
 function adminStars(value){const n=Math.max(1,Math.min(5,Number(value)||1));return "★".repeat(n)+"☆".repeat(5-n)}
 async function loadReviews(){state.reviews=await api("/rest/v1/reviews?select=*&order=sort_order.asc,created_at.desc")||[];renderReviews()}
 function renderReviews(){
@@ -198,7 +310,53 @@ async function deleteReviewRecord(){
   }
 }
 async function loadSettings(){const d=await api("/rest/v1/site_settings?select=*&id=eq.1");state.settings=d?.[0]||{};Object.entries(state.settings).forEach(([k,v])=>{const f=$("#settingsForm").elements[k];if(!f)return;if(f.type==="checkbox")f.checked=Boolean(v);else f.value=v??""});$$("[data-brand]").forEach(x=>x.textContent=state.settings.brand_name||"Torn Deals")}
-async function saveSettings(e){e.preventDefault();const f=new FormData(e.target),p={id:1,brand_name:String(f.get("brand_name")).trim(),tagline:String(f.get("tagline")).trim(),default_currency:String(f.get("default_currency")),whatsapp_number:String(f.get("whatsapp_number")||"").replace(/\D/g,""),telegram_username:String(f.get("telegram_username")||"").replace(/^@/,"").trim(),support_email:String(f.get("support_email")||"").trim(),instagram_username:String(f.get("instagram_username")||"").replace(/^@/,"").trim(),announcement:String(f.get("announcement")||"").trim(),usdt_enabled:f.get("usdt_enabled")==="on",usdt_network:String(f.get("usdt_network")||"TRC20").trim(),usdt_address:String(f.get("usdt_address")||"").trim(),btc_enabled:f.get("btc_enabled")==="on",btc_address:String(f.get("btc_address")||"").trim(),ltc_enabled:f.get("ltc_enabled")==="on",ltc_address:String(f.get("ltc_address")||"").trim(),eth_enabled:f.get("eth_enabled")==="on",eth_address:String(f.get("eth_address")||"").trim(),crypto_payment_note:String(f.get("crypto_payment_note")||"").trim(),updated_at:new Date().toISOString()};$("#settingsMsg").textContent="Saving...";try{await api("/rest/v1/site_settings",{method:"POST",headers:{"Prefer":"resolution=merge-duplicates,return=minimal"},body:JSON.stringify(p)});$("#settingsMsg").textContent="Saved.";state.settings=p;$$("[data-brand]").forEach(x=>x.textContent=p.brand_name);toast("Settings saved")}catch(err){$("#settingsMsg").textContent=err.message}}
+async function saveSettings(e){
+  e.preventDefault();const f=new FormData(e.target);
+  const p={id:1,brand_name:String(f.get("brand_name")).trim(),tagline:String(f.get("tagline")).trim(),default_currency:String(f.get("default_currency")),whatsapp_number:String(f.get("whatsapp_number")||"").replace(/\D/g,""),telegram_username:String(f.get("telegram_username")||"").replace(/^@/,"").trim(),support_email:String(f.get("support_email")||"").trim(),instagram_username:String(f.get("instagram_username")||"").replace(/^@/,"").trim(),announcement:String(f.get("announcement")||"").trim(),seller_program_enabled:f.get("seller_program_enabled")==="on",discord_invite_url:String(f.get("discord_invite_url")||"").trim(),seller_verification_hours:Number(f.get("seller_verification_hours")||48),seller_payment_methods:String(f.get("seller_payment_methods")||"").trim(),seller_program_note:String(f.get("seller_program_note")||"").trim(),usdt_enabled:f.get("usdt_enabled")==="on",usdt_network:String(f.get("usdt_network")||"TRC20").trim(),usdt_address:String(f.get("usdt_address")||"").trim(),btc_enabled:f.get("btc_enabled")==="on",btc_address:String(f.get("btc_address")||"").trim(),ltc_enabled:f.get("ltc_enabled")==="on",ltc_address:String(f.get("ltc_address")||"").trim(),eth_enabled:f.get("eth_enabled")==="on",eth_address:String(f.get("eth_address")||"").trim(),crypto_payment_note:String(f.get("crypto_payment_note")||"").trim(),updated_at:new Date().toISOString()};
+  $("#settingsMsg").textContent="Saving...";
+  try{await api("/rest/v1/site_settings",{method:"POST",headers:{"Prefer":"resolution=merge-duplicates,return=minimal"},body:JSON.stringify(p)});$("#settingsMsg").textContent="Saved.";state.settings=p;$$('[data-brand]').forEach(x=>x.textContent=p.brand_name);toast("Settings saved")}catch(err){$("#settingsMsg").textContent=err.message}
+}
+function slugify(value){
+  return String(value||"")
+    .toLowerCase()
+    .normalize("NFKD")
+    .replace(/[\u0300-\u036f]/g,"")
+    .replace(/[^a-z0-9]+/g,"-")
+    .replace(/^-+|-+$/g,"")
+    .slice(0,100);
+}
+function parseTargetKeywords(value){
+  return [...new Set(
+    String(value||"")
+      .split(/[\n,]+/)
+      .map(item=>item.trim())
+      .filter(Boolean)
+  )].slice(0,20);
+}
+function updateSeoPreview(){
+  const form=$("#productForm");
+  const title=String(form.elements.seo_title?.value||form.elements.title?.value||"Product title | TornDeals").trim();
+  const description=String(form.elements.seo_description?.value||form.elements.short_description?.value||"Your Google description preview will appear here.").trim();
+  const slug=slugify(form.elements.seo_slug?.value||"product");
+  const imageAlt=String(form.elements.image_alt?.value||"");
+  $("#seoPreviewTitle").textContent=title||"Product title | TornDeals";
+  $("#seoPreviewDescription").textContent=description||"Your Google description preview will appear here.";
+  $("#seoPreviewUrl").textContent=`https://torndeals.me/product.html?slug=${slug||"product"}`;
+  $("#productUrlPreview").textContent=`https://torndeals.me/product.html?slug=${slug}`;
+  $("#seoTitleCount").textContent=`${String(form.elements.seo_title?.value||"").length} / 70`;
+  $("#seoDescriptionCount").textContent=`${String(form.elements.seo_description?.value||"").length} / 170`;
+  $("#imageAltCount").textContent=`${imageAlt.length} / 160`;
+}
+function generateSeoDefaults(force=false){
+  const form=$("#productForm");
+  const title=String(form.elements.title.value||"").trim();
+  const shortDescription=String(form.elements.short_description.value||"").trim();
+  if(force||!form.elements.seo_slug.value)form.elements.seo_slug.value=slugify(title);
+  if(force||!form.elements.seo_title.value)form.elements.seo_title.value=(title?`${title} | TornDeals`:"").slice(0,70);
+  if(force||!form.elements.seo_description.value)form.elements.seo_description.value=shortDescription.slice(0,170);
+  if(force||!form.elements.image_alt.value)form.elements.image_alt.value=(title?`${title} product image`:"").slice(0,160);
+  updateSeoPreview();
+}
 function resetEditor(){
   state.editing=null;
   state.existing=[];
@@ -212,6 +370,7 @@ function resetEditor(){
   $("#deleteProduct").classList.add("hidden");
   $("#productMsg").textContent="";
   renderPreviews();
+  updateSeoPreview();
 }
 
 function showProductEditor(){
@@ -255,6 +414,7 @@ function openEditor(productOrId=null){
     $("#editorTitle").textContent="Add product";
     state.editing=null;
     renderPreviews();
+    updateSeoPreview();
     return;
   }
 
@@ -266,8 +426,14 @@ function openEditor(productOrId=null){
     [
       "id","product_kind","title","game","platform","region","account_type",
       "price","currency","stock_quantity","warranty_days","status",
-      "short_description","description","details","delivery_note","featured"
+      "short_description","description","details","delivery_note","featured",
+      "seo_title","seo_description","seo_slug","image_alt"
     ].forEach(name=>setProductField(name,product[name]));
+
+    setProductField(
+      "target_keywords",
+      (state.seoPrivate[product.id]||[]).join(", ")
+    );
 
     const cryptoPrices=
       product.crypto_prices&&typeof product.crypto_prices==="object"
@@ -290,6 +456,7 @@ function openEditor(productOrId=null){
       : [];
 
     renderPreviews();
+    updateSeoPreview();
   }catch(error){
     console.error("Product editor error:",error);
     $("#productMsg").textContent="The product editor could not load this listing. Refresh the page and try again.";
@@ -305,7 +472,97 @@ function renderPreviews(){const box=$("#previews");box.innerHTML="";state.existi
 function addImages(files){const remain=8-state.existing.length-state.pending.length;[...files].slice(0,remain).forEach(file=>{if(!["image/jpeg","image/png","image/webp"].includes(file.type)||file.size>8*1024*1024)return;state.pending.push({file,preview:URL.createObjectURL(file)})});renderPreviews();$("#images").value=""}
 async function uploadImages(){const out=[];for(const x of state.pending){const safe=x.file.name.toLowerCase().replace(/[^a-z0-9._-]/g,"-"),path=`accounts/${Date.now()}-${crypto.randomUUID()}-${safe}`;const r=await fetch(`${BASE}/storage/v1/object/listing-images/${path}`,{method:"POST",headers:{"apikey":KEY,"Authorization":`Bearer ${state.access}`,"Content-Type":x.file.type,"x-upsert":"false"},body:x.file});if(!r.ok)throw new Error((await r.text())||"Image upload failed");out.push({path,url:`${BASE}/storage/v1/object/public/listing-images/${path}`})}return out}
 async function removeImages(paths){for(const p of paths){await fetch(`${BASE}/storage/v1/object/listing-images/${p}`,{method:"DELETE",headers:{"apikey":KEY,"Authorization":`Bearer ${state.access}`}})}}
-async function saveProduct(e){e.preventDefault();const f=new FormData(e.target);$("#saveProduct").disabled=true;$("#productMsg").textContent="Saving...";try{const uploaded=await uploadImages(),details=String(f.get("details")||"").split("\n").map(x=>x.trim()).filter(Boolean);const crypto_prices={};[["USDT","crypto_usdt"],["BTC","crypto_btc"],["LTC","crypto_ltc"],["ETH","crypto_eth"]].forEach(([symbol,name])=>{const raw=String(f.get(name)||"").trim();if(raw!==""&&Number(raw)>0)crypto_prices[symbol]=Number(raw)});const p={product_kind:String(f.get("product_kind")),title:String(f.get("title")).trim(),game:String(f.get("game")).trim(),platform:String(f.get("platform")).trim(),region:String(f.get("region")).trim(),account_type:String(f.get("account_type")||"").trim(),price:Number(f.get("price")),currency:String(f.get("currency")),stock_quantity:Number(f.get("stock_quantity")),warranty_days:Number(f.get("warranty_days")||0),status:String(f.get("status")),short_description:String(f.get("short_description")).trim(),description:String(f.get("description")).trim(),details,delivery_note:String(f.get("delivery_note")||"").trim(),crypto_prices,featured:f.get("featured")==="on",ownership_verified:true,images:[...state.existing,...uploaded],updated_at:new Date().toISOString()};if(state.editing)await api(`/rest/v1/listings?id=eq.${state.editing.id}`,{method:"PATCH",headers:{"Prefer":"return=minimal"},body:JSON.stringify(p)});else await api("/rest/v1/listings",{method:"POST",headers:{"Prefer":"return=minimal"},body:JSON.stringify(p)});await removeImages(state.remove);toast(state.editing?"Product updated":"Product added");closeEditor();await loadProducts()}catch(err){$("#productMsg").textContent=err.message}finally{$("#saveProduct").disabled=false}}
+async function saveProduct(e){
+  e.preventDefault();
+  const f=new FormData(e.target);
+  $("#saveProduct").disabled=true;
+  $("#productMsg").textContent="Saving...";
+
+  try{
+    const uploaded=await uploadImages();
+    const details=String(f.get("details")||"")
+      .split("\n")
+      .map(item=>item.trim())
+      .filter(Boolean);
+
+    const crypto_prices={};
+    [["USDT","crypto_usdt"],["BTC","crypto_btc"],["LTC","crypto_ltc"],["ETH","crypto_eth"]]
+      .forEach(([symbol,name])=>{
+        const raw=String(f.get(name)||"").trim();
+        if(raw!==""&&Number(raw)>0)crypto_prices[symbol]=Number(raw);
+      });
+
+    const seoSlug=slugify(f.get("seo_slug"));
+    if(!seoSlug)throw new Error("Add a valid product URL keyword.");
+    const targetKeywords=parseTargetKeywords(f.get("target_keywords"));
+
+    const payload={
+      product_kind:String(f.get("product_kind")),
+      title:String(f.get("title")).trim(),
+      game:String(f.get("game")).trim(),
+      platform:String(f.get("platform")).trim(),
+      region:String(f.get("region")).trim(),
+      account_type:String(f.get("account_type")||"").trim(),
+      price:Number(f.get("price")),
+      currency:String(f.get("currency")),
+      stock_quantity:Number(f.get("stock_quantity")),
+      warranty_days:Number(f.get("warranty_days")||0),
+      status:String(f.get("status")),
+      short_description:String(f.get("short_description")).trim(),
+      description:String(f.get("description")).trim(),
+      details,
+      delivery_note:String(f.get("delivery_note")||"").trim(),
+      crypto_prices,
+      featured:f.get("featured")==="on",
+      ownership_verified:true,
+      images:[...state.existing,...uploaded],
+      seo_title:String(f.get("seo_title")).trim(),
+      seo_description:String(f.get("seo_description")).trim(),
+      seo_slug:seoSlug,
+      image_alt:String(f.get("image_alt")).trim(),
+      updated_at:new Date().toISOString()
+    };
+
+    let listingId;
+    if(state.editing){
+      listingId=state.editing.id;
+      await api(`/rest/v1/listings?id=eq.${listingId}`,{
+        method:"PATCH",
+        headers:{"Prefer":"return=minimal"},
+        body:JSON.stringify(payload)
+      });
+    }else{
+      const created=await api("/rest/v1/listings",{
+        method:"POST",
+        headers:{"Prefer":"return=representation"},
+        body:JSON.stringify(payload)
+      });
+      listingId=created?.[0]?.id;
+      if(!listingId)throw new Error("The product saved, but its ID was not returned.");
+    }
+
+    await api("/rest/v1/listing_seo_private",{
+      method:"POST",
+      headers:{"Prefer":"resolution=merge-duplicates,return=minimal"},
+      body:JSON.stringify({
+        listing_id:listingId,
+        target_keywords:targetKeywords,
+        updated_at:new Date().toISOString()
+      })
+    });
+
+    await removeImages(state.remove);
+    toast(state.editing?"Product and SEO updated":"Product and SEO added");
+    closeEditor();
+    await loadProducts();
+  }catch(error){
+    $("#productMsg").textContent=error.message.includes("listings_seo_slug_unique")
+      ?"That product URL keyword is already being used. Choose another one."
+      :error.message;
+  }finally{
+    $("#saveProduct").disabled=false;
+  }
+}
 async function deleteProduct(){if(!state.editing||!confirm(`Delete "${state.editing.title}"?`))return;try{await api(`/rest/v1/listings?id=eq.${state.editing.id}`,{method:"DELETE",headers:{"Prefer":"return=minimal"}});await removeImages((state.editing.images||[]).map(x=>x.path).filter(Boolean));toast("Product deleted");closeEditor();await loadProducts()}catch(err){toast(err.message)}}
 function tab(name){$$(".tab").forEach(x=>x.classList.toggle("active",x.dataset.tab===name));$$(".panel").forEach(x=>x.classList.remove("active"));$(`#${name}Panel`).classList.add("active")}
 $("#loginForm").onsubmit=signIn;
@@ -339,10 +596,31 @@ $("#cancelEditor").onclick=closeEditor;
 $("#productForm").onsubmit=saveProduct;
 $("#deleteProduct").onclick=deleteProduct;
 $("#images").onchange=event=>addImages(event.target.files);
+$("#generateSlug").onclick=()=>{
+  const form=$("#productForm");
+  form.elements.seo_slug.value=slugify(form.elements.title.value);
+  generateSeoDefaults(false);
+};
+["title","short_description","seo_title","seo_description","seo_slug","image_alt"].forEach(name=>{
+  $("#productForm").elements[name].addEventListener("input",updateSeoPreview);
+});
+$("#productForm").elements.title.addEventListener("blur",()=>generateSeoDefaults(false));
+$("#productForm").elements.short_description.addEventListener("blur",()=>generateSeoDefaults(false));
 
 $("#productSearch").oninput=renderProducts;
 $("#productStatus").onchange=renderProducts;
 $("#refreshOrders").onclick=loadOrders;
+$("#refreshSellers").onclick=loadSellerRequests;
+$("#sellerSearch").oninput=renderSellerRequests;
+$("#sellerStatus").onchange=renderSellerRequests;
+$("#sellersList").addEventListener("click",event=>{const button=event.target.closest("[data-open-seller]");if(button)openSellerRequest(button.dataset.openSeller)});
+$("#closeSellerEditor").onclick=closeSellerRequest;
+$("#cancelSellerEditor").onclick=closeSellerRequest;
+$("#sellerAdminForm").onsubmit=saveSellerRequest;
+$("#deleteSeller").onclick=deleteSellerRequest;
+$("#copySellerEmail").onclick=()=>copyValue(state.sellerEditing?.contact_email,$("#copySellerEmail"));
+$("#copySellerDiscord").onclick=()=>copyValue(state.sellerEditing?.discord_username,$("#copySellerDiscord"));
+$("#copySellerOffer").onclick=()=>copyValue(sellerOfferMessage(),$("#copySellerOffer"));
 $("#settingsForm").onsubmit=saveSettings;
 $$(".tab").forEach(item=>item.onclick=()=>tab(item.dataset.tab));
 
@@ -356,6 +634,8 @@ $("#editor").addEventListener("cancel",event=>{
   Some browsers retarget clicks from native select menus to the dialog,
   which used to close the window and reset every selected value.
 */
+$("#sellerEditor").addEventListener("cancel",event=>{event.preventDefault();closeSellerRequest()});
+
 $("#reviewEditor").onclick=event=>{
   if(event.target===$("#reviewEditor"))closeReviewEditor();
 };
